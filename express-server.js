@@ -18,4 +18,4 @@ app.get('/api/dish', cors(), (req, res) => {
         } else ( res.send(JSON.stringify({error: 'Error'})))})
     .select({id: 1, name: 1, description: 1});  //chose which fields you want
 })
-
+*/
