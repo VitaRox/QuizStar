@@ -1,10 +1,11 @@
 const express = require('express');
 const app = express();
+app.use(express.static('client'))
 
-const port = 3000;
+const port = 3200;
 
 app.get('/', function (req, res) {
-  res.send('Hello World!')
+  res.send('Hello.')
 })
 
 app.post('/', function (req, res) {
