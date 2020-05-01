@@ -10,7 +10,7 @@ function Login() {
     <div>
       <h1>Login page Coming Soon!</h1>
     </div>
-  )
+  );
 };
 
 export default Login;

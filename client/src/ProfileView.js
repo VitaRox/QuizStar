@@ -9,7 +9,7 @@ function ProfileView() {
     <div>
       <h1>Profile page Coming Soon!</h1>
     </div>
-  )
+  );
 };
 
 export default ProfileView;

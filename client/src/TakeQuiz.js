@@ -7,7 +7,7 @@ function TakeQuiz() {
     <div>
       <h1>Quiz Taking page Coming Soon!</h1>
     </div>
-  )
+  );
 };
 
 export default TakeQuiz;

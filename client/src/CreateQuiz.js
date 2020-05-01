@@ -7,7 +7,7 @@ function CreateQuiz() {
     <div>
       <h1>Quiz Creating page Coming Soon!</h1>
     </div>
-  )
+  );
 };
 
 export default CreateQuiz;
