@@ -1,0 +1,23 @@
+{
+  "name": "webappwinning",
+  "version": "1.0.0",
+  "description": "A project for group B for AD 410, web app practicum.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VitaRox/WebAppWinning.git"
+  },
+  "author": "Group B",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VitaRox/WebAppWinning/issues"
+  },
+  "homepage": "https://github.com/VitaRox/WebAppWinning#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.9"
+  }
+}
