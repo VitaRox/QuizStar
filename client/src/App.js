@@ -1,12 +1,33 @@
 import React, {useState, useEffect} from 'react';
 import logo from './logo.svg';
-import './App.css';
-import UsernameForm from './UsernameForm';
+import './styles/App.css';
+import UsernameForm from './components/UsernameForm';
+import QuizStarHeader from './components/QuizStarHeader';
+import QuizNameInputForm from './components/QuizNameInputForm';
+import QuestionInputForm from './components/QuestionInputForm';
+import OptionInputForm from './components/OptionInputForm';
+// eslint-disable-next-line no-unused-vars
+import PasswordEntryForm from './components/PasswordEntryForm';
+// import OptionDisplay from
+
 
 function App() {
+
+  // Here we will define our instance of our OptionDisplay;
+  // This will only be available in CreateQuiz or TakeQuiz views;
+  // const optionDisplay = <OptionDisplay />;
+
   return (
     <div className="demo-big-content">
-      <UsernameForm />
+      <h2></h2>
+      <body>
+        <UsernameForm />
+        <PasswordEntryForm />
+        <QuizNameInputForm />
+        <QuestionInputForm/>
+        <OptionInputForm/>
+      </body>
+
       {/*<Router>*/}
       {/*  <Layout>*/}
 
