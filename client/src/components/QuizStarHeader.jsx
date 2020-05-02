@@ -5,11 +5,11 @@ import React, {useState, useEffect} from 'react';
   Perhaps can alter color of it depending on the view user is in?
  */
 function QuizStarHeader() {
-  return(
-    <div>
-      <head>*** QuizStar ***</head>
-    </div>
 
+  return(
+    <div className="pageTitle">
+      <h1>*** QuizStar ***</h1>
+    </div>
   );
 };
 
