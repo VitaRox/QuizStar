@@ -9,6 +9,7 @@ import OptionInputForm from './components/OptionInputForm';
 // eslint-disable-next-line no-unused-vars
 import PasswordEntryForm from './components/PasswordEntryForm';
 // import OptionDisplay from
+import Switch from './components/Switch';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <QuizNameInputForm />
         <QuestionInputForm/>
         <OptionInputForm/>
+        <Switch />
       </body>
 
       {/*<Router>*/}
