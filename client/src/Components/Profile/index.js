@@ -8,6 +8,7 @@ const Profile= ()=> {
         <div>
             <main>
                 <h1>Profile page Coming Soon!</h1>    
+                <input type="file"></input>
             </main>
         </div>
         )
