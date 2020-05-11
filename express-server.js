@@ -1,4 +1,7 @@
-const express = require('express');
+//         First server from week one just to test a basic server ,
+//          Commented out in order to let the other server retrieve uploads
+
+/* const express = require('express');
 const app = express();
 app.use(express.static('client'))
 
@@ -20,4 +23,4 @@ app.delete('/user', function (req, res) {
   res.send('Got a DELETE request at /user')
 })
 
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
+app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`)); */
