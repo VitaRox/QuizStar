@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import Radio from '@material-ui/core/Radio';
 import Switch from './Switch';
 // import RadioGroup from '@material-ui/core/RadioGroup';
 // import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -33,13 +32,6 @@ function OptionInputForm() {
     <div className={option}>
       Please type an option into the form below and submit to add it to yr quiz;
       <form>
-        {/*<Radio*/}
-        {/*  checked={false}*/}
-        {/*  onChange={option}*/}
-        {/*  value={option}*/}
-        {/*  name="option"*/}
-        {/*  inputProps={{ 'aria-label': option }}*/}
-        {/*/>*/}
         <input
           value={optionInput}
           onChange={e => setOptionInput(e.target.value)}

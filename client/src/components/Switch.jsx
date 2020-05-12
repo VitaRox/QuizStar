@@ -18,7 +18,7 @@ function Switch() {
     <>
       <input
         checked={isOn}
-        onChange={switched}
+        onChange={e => switched()}
         className="react-switch-checkbox"
         id={`react-switch-new`}
         type="checkbox"

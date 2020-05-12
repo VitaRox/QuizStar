@@ -5,9 +5,27 @@ import React, {useState, useEffect} from 'react';
  */
 function ProfileView() {
 
+  // Prop defining the user's name;
+  const [userName, setUserName] = useState("");
+  const name = () => {
+    setUserName(userName;
+  };
+
+  // Prop defining the user's age;
+  const [userAge, setUserAge] = useState("0");
+  const age = () => {
+    setUserAge(userAge);
+  }
+
+  // Prop defining the user's login authorization password;
+  const [userPassword, setUserPassword] = useState("");
+  const password = () => {
+    setUserPassword(userPassword);
+  }
+
   return (
     <div>
-      <h1>Profile page Coming Soon!</h1>
+      <h1>USER PROFILE</h1>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 
 /** This defines the component thru which the user provides input, an HTML-style field with a submit button.
+ * Can possibly be refactored for a) user login AND b) username creation when account created;
  * @return username
 **/
 function UsernameForm() {

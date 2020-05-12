@@ -10,6 +10,7 @@ import OptionInputForm from './components/OptionInputForm';
 import PasswordEntryForm from './components/PasswordEntryForm';
 // import OptionDisplay from
 import Switch from './components/Switch';
+import CreateQuiz from './Views/CreateQuiz';
 
 
 function App() {
@@ -22,12 +23,13 @@ function App() {
     <div className="demo-big-content">
       <h2></h2>
       <body>
-        <UsernameForm />
-        <PasswordEntryForm />
-        <QuizNameInputForm />
-        <QuestionInputForm/>
-        <OptionInputForm/>
-        <Switch />
+        <CreateQuiz />
+        {/*<UsernameForm />*/}
+        {/*<PasswordEntryForm />*/}
+        {/*<QuizNameInputForm />*/}
+        {/*<QuestionInputForm/>*/}
+        {/*<OptionInputForm/>*/}
+        {/*<Switch />*/}
       </body>
 
       {/*<Router>*/}
