@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Radio from '@material-ui/core/Radio';
+import Switch from './Switch';
 // import RadioGroup from '@material-ui/core/RadioGroup';
 // import FormControlLabel from '@material-ui/core/FormControlLabel';
 // import FormControl from '@material-ui/core/FormControl';
@@ -47,6 +48,8 @@ function OptionInputForm() {
           name="option"
           required
         />
+        <p>Is this answer the correct answer?</p>
+        <Switch />
         <button type="submit" className="submitButton" onClick={option}>Submit your option.</button>
       </form>
     </div>

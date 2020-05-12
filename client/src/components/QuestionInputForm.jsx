@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-
+import Switch from './Switch';
 /*
  A component to render the form thru which the user enters a new question to add to the Quiz
  they are currently editing;
@@ -15,7 +15,7 @@ function QuestionInputForm() {
 
   return(
     <div className={QuestionInputForm}>
-      <text>Please enter a question.</text>
+      <h1>Please enter a question.</h1>
       <form>
         <input
           value={questionInput}
@@ -25,7 +25,8 @@ function QuestionInputForm() {
           name="question"
           required
         />
-        <button type="submit" className="submitButton" onClick={question}>Submit your response.</button>
+
+        <button type="submit" className="submitButton" onClick={question}>Submit your Question.</button>
       </form>
     </div>
   );

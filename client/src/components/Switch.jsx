@@ -8,7 +8,10 @@ function Switch() {
 
   // Control state of the switch; if switched (i.e. isOn == true), should turn red;
   const switched = () => {
-    setIsOn(!isOn.prevState);
+    // This first way is supposed to be super-current best practice,
+    // but can't make it work for some reason;
+    // setIsOn(!isOn.prevState);
+    setIsOn(!isOn);
   };
 
   return (
@@ -21,13 +24,6 @@ function Switch() {
         type="checkbox"
       />
       <label
-        style= () => {
-          if (isOn) {
-            backgroundColor="grey"
-          }else{
-            backgroundColor="red"
-          }
-        }
         className="react-switch-label"
         htmlFor={`react-switch-new`}
       >
