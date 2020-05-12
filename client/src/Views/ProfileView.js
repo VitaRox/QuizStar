@@ -8,7 +8,7 @@ function ProfileView() {
   // Prop defining the user's name;
   const [userName, setUserName] = useState("");
   const name = () => {
-    setUserName(userName;
+    setUserName(userName);
   };
 
   // Prop defining the user's age;
