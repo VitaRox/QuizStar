@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-// Going to put into this the components for rendering the quiz-taking view;
+// Going to put into this the Components for rendering the quiz-taking view;
 function TakeQuiz() {
 
   return(

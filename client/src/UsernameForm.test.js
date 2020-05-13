@@ -1,4 +1,4 @@
-const username = require('./components/UsernameForm.jsx');
+const username = require('./Components/UsernameForm.jsx');
 const pack = require('../package.json');
 
 test('returns whatever the user types into it', () => {

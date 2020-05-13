@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 
 /*
  Initial 'welcome' view AFTER logging in;
- Should include components/routes to TakeQuiz (routes to list of stored quizzes), CreateQuiz,
+ Should include Components/routes to TakeQuiz (routes to list of stored quizzes), CreateQuiz,
  LogOut, possibly more;
 */
 function Home() {

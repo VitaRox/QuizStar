@@ -5,14 +5,14 @@ import { Router, Route, Link } from "react-router";
 import Home from './Views/Home';
 import Login from './Views/Login';
 import ProfileView from './Views/ProfileView';
-import UsernameForm from './components/UsernameForm';
-import QuizStarHeader from './components/QuizStarHeader';
+import UsernameForm from './Components/UsernameForm';
+import QuizStarHeader from './Components/QuizStarHeader';
 import CreateQuiz from './Views/CreateQuiz';
-import QuizNameInputForm from './components/QuizNameInputForm';
-import QuestionInputForm from './components/QuestionInputForm';
-import OptionInputForm from './components/OptionInputForm';
+import QuizNameInputForm from './Components/QuizNameInputForm';
+import QuestionInputForm from './Components/QuestionInputForm';
+import OptionInputForm from './Components/OptionInputForm';
 // eslint-disable-next-line no-unused-vars
-import PasswordEntryForm from './components/PasswordEntryForm';
+import PasswordEntryForm from './Components/PasswordEntryForm';
 // import OptionDisplay from
 import TakeQuiz from './Views/TakeQuiz';
 import {Drawer} from '@material-ui/core';

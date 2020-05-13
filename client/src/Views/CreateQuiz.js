@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import QuestionInputForm from '../components/QuestionInputForm';
-import OptionInputForm from '../components/OptionInputForm';
+import QuestionInputForm from '../Components/QuestionInputForm';
+import OptionInputForm from '../Components/OptionInputForm';
 
 // This implements the view through which the user can design and save a new Quiz;
 function CreateQuiz() {
