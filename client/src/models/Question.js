@@ -1,3 +1,7 @@
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+//create schema
 const QuestionSchema = new mongoose.Schema({
  description: String,
  answers: [
@@ -12,4 +16,9 @@ const QuestionSchema = new mongoose.Schema({
 
    }
  ]
-});
+})
+
+//create model for todo
+const Quiz = mongoose.model('Quiz', QuestionSchema);
+
+module.exports = Quiz;

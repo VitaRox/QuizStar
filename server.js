@@ -7,13 +7,13 @@ const express = require('express');
 var cors = require('cors');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
-const Data = require('./users');
+//const Data = require('./users');
 
 const API_PORT = 3001;
 const app = express();
 app.use(cors());
 const router = express.Router();
-
+//const routes= require('./routes/api')
 
 // this is our MongoDB database
 const dbRoute =
@@ -36,6 +36,7 @@ app.use(logger('dev'));
 
 // this is our get method
 // this method fetches all available data in our database
+/*
 router.get('/getData', (req, res) => {
   Data.find((err, data) => {
     if (err) return res.json({ success: false, error: err });
@@ -79,8 +80,26 @@ router.post('/putData', (req, res) => {
   });
 });
 
+
+*/
+//Solves coors no access-controll-allow-origin-header_
+//error
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", '*'); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+
+
 // append /api for our http requests
-app.use('/api', router);
+app.use('/api',router);
+
+
+app.use((err, req, res, next) => {
+  console.log(err);
+  next();
+});
 
 // launch our backend into a port
 app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));

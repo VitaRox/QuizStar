@@ -3,6 +3,7 @@
 const express = require('express')
 const router = express.Router()
 const Question = require('./models/Question')
+const Subject = require('./models/Subject')
 // includes our model
 
 
@@ -33,4 +34,18 @@ router.get('/questions', async (req, res) => {
     } catch (error) {
         return res.status(500).json({"error":error})
     }
-})
+});
+
+
+
+router.get('/api/subjects', async (req, res) => {
+  try {
+      const subjects = await Subject.find()
+      return res.status(200).json(subjects)
+  } catch (error) {
+      return res.status(500).json({"error":error})
+  }
+});
+
+
+module.exports = router;

@@ -7,29 +7,31 @@ import QuizCreate from "../QuizCreate/index";
 import QuizTake from "../QuizTake/index";
 import Home from "../Home/index"
 import { Layout, Header, Navigation, Drawer, Content } from 'react-mdl';
-
+import Subject from "../Subject/Subject";
 
 const App = () => {
   return (
   <div className="demo-big-content">
-       <Router> 
+       <Router>
     <Layout>
-      
+
         <Header className="header_Color" title="QuizStar" scroll>
             <Navigation>
-             <Link to="/Login">Login</Link>  
-             <Link to="/Profile">Profile</Link>   
-             <Link to="/CreateQuiz">Create Quiz</Link>   
-             <Link to="/TakeQuiz">Take Quiz</Link>               
-          
+             <Link to="/Login">Login</Link>
+             <Link to="/Profile">Profile</Link>
+             <Link to="/api/subjects">Subject List</Link>
+             <Link to="/CreateQuiz">Create Quiz</Link>
+             <Link to="/TakeQuiz">Take Quiz</Link>
+
             </Navigation>
         </Header>
         <Drawer title="QuizStar">
             <Navigation>
-            <Link to="/Login">Login</Link>  
-             <Link to="/Profile">Profile</Link>   
-             <Link to="/CreateQuiz">Create Quiz</Link>   
-             <Link to="/TakeQuiz">Take Quiz</Link>    
+            <Link to="/Login">Login</Link>
+             <Link to="/Profile">Profile</Link>
+             <Link to="/api/subjects">Subject List</Link>
+             <Link to="/CreateQuiz">Create Quiz</Link>
+             <Link to="/TakeQuiz">Take Quiz</Link>
             </Navigation>
         </Drawer>
         <Content>
@@ -37,12 +39,13 @@ const App = () => {
             <Route path="/" exact strict component={Home} />
           <Route path="/Login" exact strict component={Login} />
           <Route path="/Profile"  exact strict component={Profile} />
+          <Route path="/api/subjects"  exact strict component={Subject} />
           <Route path="/CreateQuiz" exact strict component={QuizCreate} />
           <Route path="/TakeQuiz" exact strict component={QuizTake} />
          </div>
         </Content>
     </Layout>
-     </Router> 
+     </Router>
 </div>
   );
 }

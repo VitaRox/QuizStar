@@ -19,7 +19,6 @@ const QuestionSchema = new mongoose.Schema({
      required: true,
      default: false
    }
-
    }
  ]
 });
