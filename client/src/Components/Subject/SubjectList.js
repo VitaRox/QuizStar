@@ -10,7 +10,7 @@ const ListSubject = ({ subjects }) => {
             (
               subjects.map(subject => {
                 return (
-                  <li key={subject._id}>{subject.subjectName}</li>
+                  <li key={subject._id}></li>
                 )
               })
             )
