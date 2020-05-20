@@ -8,6 +8,7 @@ var cors = require('cors');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 //const Data = require('./users');
+const Subject = require('./client/src/models/Subject')
 
 const API_PORT = 3001;
 const app = express();
@@ -82,8 +83,8 @@ router.post('/putData', (req, res) => {
 
 
 */
-//Solves coors no access-controll-allow-origin-header_
-//error
+//Solves coors no access-controll-allow-origin-header_error
+
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", '*'); // update to match the domain you will make the request from
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -91,6 +92,16 @@ app.use(function(req, res, next) {
 });
 
 
+app.get('/api/subjects', cors(), (req, res) => {
+    var query = req.params.query;
+    Sub
+    .find({'request': query}, function(err, result)
+        {if (err) throw err;
+        if (result) {
+            res.json(result)
+        } else ( res.send(JSON.stringify({error: 'Error'})))})
+    .select({id: 1, subjectName: 1});
+})
 
 // append /api for our http requests
 app.use('/api',router);

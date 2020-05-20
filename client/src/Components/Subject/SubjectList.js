@@ -1,26 +1,32 @@
-import React from 'react';
+import React, {Component} from 'react';
+import axios from 'axios';
 
-const ListSubject = ({ subjects }) => {
+export default class Subject extends Component {
+    state = {
+        subject: []
+    }
 
-  return (
-    <ul>
-      {
-        subjects &&
-          subjects.length > 0 ?
-            (
-              subjects.map(subject => {
-                return (
-                  <li key={subject._id}></li>
-                )
-              })
-            )
-            :
-            (
-              <li>No more left</li>
-            )
-          }
-    </ul>
-  )
+componentDidMount(){
+  this.getSubjects();
 }
 
-export default ListSubject
+getSubjects = () => {
+  axios.get('http://localhost:3000/api/subjects')
+    .then(res => {
+      if(res.data){
+        this.setState({
+          subject:res.data
+        })
+      }
+    })
+    .catch(err => console.log(err))
+}
+render()
+    {
+          return (<div className="subject-content">
+              {this.state.subject.map(subject => <li key = {subject.id}> Subject {subject.subjectName}<br></br></li>)}
+              </div>
+        )
+
+    }
+}

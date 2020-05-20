@@ -7,7 +7,7 @@ import QuizCreate from "../QuizCreate/index";
 import QuizTake from "../QuizTake/index";
 import Home from "../Home/index"
 import { Layout, Header, Navigation, Drawer, Content } from 'react-mdl';
-import Subject from "../Subject/Subject";
+import Subject from "../Subject/SubjectList";
 
 const App = () => {
   return (
