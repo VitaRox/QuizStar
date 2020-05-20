@@ -4,7 +4,7 @@ import Question from "../QuizCreate/question";
 
 class QuizCreate extends Component {
     state = {
-    	questionCount: 5
+    	questionCount: 1
 	}
 
 	addQuestions = () => {
@@ -20,17 +20,23 @@ class QuizCreate extends Component {
 	}
 
 	render(){
+		let elements = [];
+		for(var n = 0; n < this.state.questionCount; n++){
+			elements.push(<Question questionNumber={n+1}/>);
+		}
+
 		return(
 	        <div>
 	            <main>
-	            	<p>Number of Questions: {this.state.questionCount}</p>
+					<label for="quizName">Quiz Name:</label>
+					<input type="text" id="quizName" name="quizName"/><br/>
 	            	<button id="removeQuestion" onClick={ () => this.removeQuestions()}>Question -</button>
 	            	<button id="addQuestion" onClick={ () => this.addQuestions()}>Question +</button>
-	            	<Question questionCount={this.state.questionCount}/>
+	            	{elements}
 	            	<button id="addQuestion" onClick={ () => this.addQuestions()}>Question +</button>
 	            </main>
 	        </div>
-		)
+	    )
 	}
 }
 

@@ -1,27 +1,43 @@
-import React, {Component} from 'react';;
+import React, {Component} from 'react';
+import Answer from "../QuizCreate/answer";
 
 class Question extends Component {
 	constructor(props){
 		super(props);
 	}
 
+	state = {
+    	answerCount: 2
+	}
+
+	addAnswer = () => {
+		if(this.state.answerCount < 4){
+			this.setState({answerCount: this.state.answerCount+1})
+		}
+	}
+
+	removeAnswer = () => {
+		if(this.state.answerCount > 2){
+			this.setState({answerCount: this.state.answerCount-1})
+		}	
+	}
+
 	render(){
 		let elements = [];
-		for(var n = 0; n < this.props.questionCount; n++){
-			elements.push(
-				<div>
-					<form action="">
-						<span>Question {n+1}</span><br/>
-						<input type="text" id="fname" name="fname" value=""/><br/>
-						<input type="text" id="lname" name="lname" value=""/><br/>
-					</form>
-				</div>
-				);
+		for(var n = 0; n < this.state.answerCount; n++){
+			elements.push(<Answer answerNumber={n+1}/>);
 		}
+
 		return(
-	        <div>
-	        	{elements}
-	        </div>
+			<div>
+				<form action="">
+					<label for="question">Question {this.props.questionNumber}:</label>
+					<input type="text" id="question" name="question"/><br/>
+					{elements}
+				</form>
+				<button id="removeAnswer" onClick={ () => this.removeAnswer()}>Answer -</button>
+	        	<button id="addAnswer" onClick={ () => this.addAnswer()}>Answer +</button>
+        	</div>
 		)
 	}
 }
