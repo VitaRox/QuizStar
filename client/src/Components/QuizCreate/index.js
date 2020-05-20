@@ -1,17 +1,22 @@
 import React, {Component} from 'react';
 import Question from "../QuizCreate/question";
 
+
 class QuizCreate extends Component {
     state = {
-    	questionCount: 3
+    	questionCount: 5
 	}
 
 	addQuestions = () => {
-		this.setState({questionCount: 1})
+		if(this.state.questionCount <= 9){
+			this.setState({questionCount: this.state.questionCount+1})
+		}
 	}
 
 	removeQuestions = () => {
-		this.setState({questionCount: 2})
+		if(this.state.questionCount > 1){
+			this.setState({questionCount: this.state.questionCount-1})
+		}	
 	}
 
 	render(){
@@ -19,9 +24,10 @@ class QuizCreate extends Component {
 	        <div>
 	            <main>
 	            	<p>Number of Questions: {this.state.questionCount}</p>
-	            	<button id="addQuestion" onclick={this.props.addQuestions}>Question -</button>
+	            	<button id="removeQuestion" onClick={ () => this.removeQuestions()}>Question -</button>
+	            	<button id="addQuestion" onClick={ () => this.addQuestions()}>Question +</button>
 	            	<Question questionCount={this.state.questionCount}/>
-	            	<button id="removeQuestion" onclick={this.props.removeQuestions}>Question +</button>
+	            	<button id="addQuestion" onClick={ () => this.addQuestions()}>Question +</button>
 	            </main>
 	        </div>
 		)

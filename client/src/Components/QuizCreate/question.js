@@ -12,8 +12,8 @@ class Question extends Component {
 				<div>
 					<form action="">
 						<span>Question {n+1}</span><br/>
-						<input type="text" id="fname" name="fname" value="John"/><br/>
-						<input type="text" id="lname" name="lname" value="Doe"/><br/>
+						<input type="text" id="fname" name="fname" value=""/><br/>
+						<input type="text" id="lname" name="lname" value=""/><br/>
 					</form>
 				</div>
 				);
