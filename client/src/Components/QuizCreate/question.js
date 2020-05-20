@@ -7,21 +7,22 @@ class Question extends Component {
 
 	render(){
 		let elements = [];
-		for(var n = 0; n < 5; n++){
+		for(var n = 0; n < this.props.questionCount; n++){
 			elements.push(
 				<div>
 					<form action="">
-						<span>Question {n}</span><br/>
+						<span>Question {n+1}</span><br/>
 						<input type="text" id="fname" name="fname" value="John"/><br/>
 						<input type="text" id="lname" name="lname" value="Doe"/><br/>
 					</form>
-					<button id="addQuestion" onclick="addQuestion()">Add Question</button>
 				</div>
 				);
 		}
 		return(
 	        <div>
+	        	<button id="addQuestion" onclick={this.props.addQuestions}>Question -</button>
 	        	{elements}
+	        	<button id="removeQuestion" onclick={this.props.removeQuestions}>Question +</button>
 	        </div>
 		)
 	}

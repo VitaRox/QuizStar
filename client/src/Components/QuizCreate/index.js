@@ -2,16 +2,24 @@ import React, {Component} from 'react';
 import Question from "../QuizCreate/question";
 
 class QuizCreate extends Component {
-	constructor(props){
-		super(props);
+    state = {
+    	questionCount: 5
+	}
+
+	addQuestions = () => {
+		this.setState({questionCount: 1})
+	}
+
+	removeQuestions = () => {
+		this.setState({questionCount: 2})
 	}
 
 	render(){
 		return(
 	        <div>
 	            <main>
-	            	<p>Number of Questions: </p>
-	            	<Question/>
+	            	<p>Number of Questions: {this.state.questionCount}</p>
+	            	<Question questionCount={this.state.questionCount} addQuestions={this.addQuestions} removeQuestions={this.removeQuestions}/>
 	            </main>
 	        </div>
 		)
