@@ -10,18 +10,18 @@ const subjectSchema = new mongoose.Schema({
   subjectName: String
 });
 
-const Sub = mongoose.model('Subject', subjectSchema);
+const Subject = mongoose.model('Subject', subjectSchema);
 
 async function createSub(){
 
- const sub1 = new Sub({
+ const sub1 = new Subject({
     subjectName: 'Math'
   })
 
   var result = await sub1.save();
   console.log("sub1 - " + result);
 
-  const sub2 = new Sub({
+  const sub2 = new Subject({
      subjectName: 'English'
    })
 
@@ -29,14 +29,14 @@ async function createSub(){
   console.log("sub2 - " + result);
 
 
-  const sub3 = new Sub({
+  const sub3 = new Subject({
       subjectName: 'Science'
     })
 
   var result = await sub3.save();
   console.log("sub3 - " + result);
 
-  const sub4 = new Sub({
+  const sub4 = new Subject({
      subjectName: 'History'
    })
 

@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export default class Subject extends Component {
     state = {
-        subject: []
+        subjects: []
     }
 
 componentDidMount(){
@@ -11,20 +11,29 @@ componentDidMount(){
 }
 
 getSubjects = () => {
-  axios.get('http://localhost:3000/api/subjects')
-    .then(res => {
-      if(res.data){
-        this.setState({
-          subject:res.data
-        })
-      }
-    })
-    .catch(err => console.log(err))
-}
+  axios.get('/subjects')
+    .then((response)=> {
+      const data = response.data;
+      this.setState({subjects:data});
+      })
+    .catch(() =>{
+      alert('Error retrieving data!!!!');
+    });
+};
+
+displaySubjects = (subjects) => {
+  if(!subjects.length) return null;
+  subjects.map((subject, index) =>(
+    <div>
+      <h3>subject.subjectName</h3>
+    </div>
+  ));
+};
+
 render()
     {
           return (<div className="subject-content">
-              {this.state.subject.map(subject => <li key = {subject.id}> Subject {subject.subjectName}<br></br></li>)}
+              {this.displaySubjects(this.state.subjects)}
               </div>
         )
 
