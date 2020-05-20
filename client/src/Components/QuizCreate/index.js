@@ -3,7 +3,7 @@ import Question from "../QuizCreate/question";
 
 class QuizCreate extends Component {
     state = {
-    	questionCount: 5
+    	questionCount: 3
 	}
 
 	addQuestions = () => {
@@ -19,7 +19,9 @@ class QuizCreate extends Component {
 	        <div>
 	            <main>
 	            	<p>Number of Questions: {this.state.questionCount}</p>
-	            	<Question questionCount={this.state.questionCount} addQuestions={this.addQuestions} removeQuestions={this.removeQuestions}/>
+	            	<button id="addQuestion" onclick={this.props.addQuestions}>Question -</button>
+	            	<Question questionCount={this.state.questionCount}/>
+	            	<button id="removeQuestion" onclick={this.props.removeQuestions}>Question +</button>
 	            </main>
 	        </div>
 		)
@@ -27,22 +29,3 @@ class QuizCreate extends Component {
 }
 
 export default QuizCreate;
-
-
-/*
-import React, {Component} from 'react';
-
-class Nav extends Component {
-	constructor(props){
-		super(props);
-	}
-	render(){
-		return(<ul id='nav'>
-			<li class='navItem'><a href='javascript:;' onClick={this.props.changePage0}>Menu</a></li>
-			<li class='navItem'><a href='javascript:;' onClick={this.props.changePage1}>Ingredients</a></li>
-		</ul>)
-	}
-}
-
-export default Nav
-*/

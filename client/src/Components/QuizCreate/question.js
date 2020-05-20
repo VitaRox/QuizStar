@@ -20,9 +20,7 @@ class Question extends Component {
 		}
 		return(
 	        <div>
-	        	<button id="addQuestion" onclick={this.props.addQuestions}>Question -</button>
 	        	{elements}
-	        	<button id="removeQuestion" onclick={this.props.removeQuestions}>Question +</button>
 	        </div>
 		)
 	}
