@@ -1,40 +1,40 @@
-import React from 'react';
+import React, {Component} from 'react';
+import Question from "../QuizCreate/question";
 
-var numberOfQuestions = 1;
-
-function addQuestion(){
-	console.log(Math.random());
-}
-
-function test(numberOfQuestions){
-	var elements = [];
-	for(var n = 0; n < numberOfQuestions; n++){
-		elements.push(
-			<div>
-				<form action="">
-					<span>Question {n}</span><br/>
-					<input type="text" id="fname" name="fname" value="John"/><br/>
-					<input type="text" id="lname" name="lname" value="Doe"/><br/>
-				</form>
-				<button id="addQuestion" onclick="addQuestion()">Add Question</button>
-			</div>
-			);
+class QuizCreate extends Component {
+	constructor(props){
+		super(props);
 	}
-	return(
-		<div>
-			{elements}
-		</div>
+
+	render(){
+		return(
+	        <div>
+	            <main>
+	            	<p>Number of Questions: </p>
+	            	<Question/>
+	            </main>
+	        </div>
 		)
+	}
 }
 
-const QuizCreate= ()=> {  
-    return(
-        <div>
-            <main>
-            	<p>Number of Questions: {numberOfQuestions}</p>
-                {test(1)}
-            </main>
-        </div>
-        )
-}
 export default QuizCreate;
+
+
+/*
+import React, {Component} from 'react';
+
+class Nav extends Component {
+	constructor(props){
+		super(props);
+	}
+	render(){
+		return(<ul id='nav'>
+			<li class='navItem'><a href='javascript:;' onClick={this.props.changePage0}>Menu</a></li>
+			<li class='navItem'><a href='javascript:;' onClick={this.props.changePage1}>Ingredients</a></li>
+		</ul>)
+	}
+}
+
+export default Nav
+*/
