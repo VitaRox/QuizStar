@@ -19,7 +19,7 @@ const App = () => {
             <Navigation>
              <Link to="/Login">Login</Link>
              <Link to="/Profile">Profile</Link>
-             <Link to="/subjects">Subject List</Link>
+             <Link to="/subjects">Browse</Link>
              <Link to="/CreateQuiz">Create Quiz</Link>
              <Link to="/TakeQuiz">Take Quiz</Link>
 
@@ -29,7 +29,7 @@ const App = () => {
             <Navigation>
             <Link to="/Login">Login</Link>
              <Link to="/Profile">Profile</Link>
-             <Link to="/subjects">Subject List</Link>
+             <Link to="/subjects">Browse</Link>
              <Link to="/CreateQuiz">Create Quiz</Link>
              <Link to="/TakeQuiz">Take Quiz</Link>
             </Navigation>

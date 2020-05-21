@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+//import {Card, CardImg, CardText, CardBody,CardTitle, CardSubtitle, Button} from 'reactstrap';
 
 export default class Subject extends Component {
     state = {
         subjects: []
     }
 
-componentDidMount(){
+componentDidMount = () => {
   this.getSubjects();
 }
 
@@ -23,8 +24,8 @@ getSubjects = () => {
 
 displaySubjects = (subjects) => {
   if(!subjects.length) return null;
-  subjects.map((subject, index) =>(
-    <div>
+  return subjects.map((subject, index) =>(
+    <div key ={index}>
       <h3>subject.subjectName</h3>
     </div>
   ));
@@ -32,10 +33,10 @@ displaySubjects = (subjects) => {
 
 render()
     {
-          return (<div className="subject-content">
+          return (
+            <div className="subject-content">
               {this.displaySubjects(this.state.subjects)}
               </div>
-        )
-
+        );
     }
 }
