@@ -27,7 +27,7 @@ displaySubjects = (subjects) => {
   if(!subjects.length) return null;
   return subjects.map((subject, index) =>(
     <div key ={index}>
-      <h3>subject.subjectName</h3>
+      <h3>{subject.subjectName}</h3>
     </div>
   ));
 };

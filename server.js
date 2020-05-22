@@ -26,27 +26,11 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
 
-//to fix empty array
-const data ={
-  subjectName: 'Will this show in DB?'
-};
-
-// new instance of the model
-const newSubject = new Subject(data);
-
-newSubject.save((error) => {
-  if(error){
-    console.log("oops try again");
-  } else{
-    console.log('data has been saved');
-  }
-});
-
 //route is returning an empty array..........
 //but new data is being saved to
 app.get('/subjects', (req, res) =>{
 
-  Subject.find({ subjectName:1}).sort({})
+  Subject.find({}).sort({})
     .then((data) =>{
       console.log('Data: ',data);
       res.json(data);
@@ -56,8 +40,6 @@ app.get('/subjects', (req, res) =>{
     });
 
 });
-
-
 
 
 //HTTP request logger
