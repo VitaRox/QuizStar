@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import Login from "../Login/index";
@@ -6,6 +6,12 @@ import Profile from "../Profile/index";
 import QuizCreate from "../QuizCreate/index";
 import QuizTake from "../QuizTake/index";
 import Home from "../Home/index"
+import UsernameForm from '../UsernameForm';
+import QuizStarHeader from '../QuizStarHeader';
+import QuizNameInputForm from '../QuizNameInputForm';
+import QuestionInputForm from '../QuestionInputForm';
+import OptionInputForm from '../OptionInputForm';
+import PasswordEntryForm from '../PasswordEntryForm';
 import { Layout, Header, Navigation, Drawer, Content } from 'react-mdl';
 
 
@@ -34,6 +40,13 @@ const App = () => {
         </Drawer>
         <Content>
             <div>
+            <QuizStarHeader />
+
+            <UsernameForm />
+            <PasswordEntryForm />
+            <QuizNameInputForm />
+            <QuestionInputForm/>
+            <OptionInputForm/>
             <Route path="/" exact strict component={Home} />
           <Route path="/Login" exact strict component={Login} />
           <Route path="/Profile"  exact strict component={Profile} />
