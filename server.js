@@ -25,9 +25,6 @@ mongoose.connect(MONGODB_URI,{useNewUrlParser: true,
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
-
-//route is returning an empty array..........
-//but new data is being saved to
 app.get('/subjects', (req, res) =>{
 
   Subject.find({}).sort({})
