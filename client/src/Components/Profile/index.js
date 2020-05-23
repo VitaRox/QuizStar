@@ -21,7 +21,7 @@ function Profile() {
   const images = files.map((file) => (
     <div key={file.name}>
       <div>
-        <img src={file.preview} style={{ width: "200px" }} alt="preview" />
+        <img src={file.preview} style={{ width: "500px" }} alt="preview" />
       </div>
     </div>
   ));
