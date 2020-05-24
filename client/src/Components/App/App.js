@@ -11,7 +11,7 @@ import QuizStarHeader from '../QuizStarHeader';
 import QuizNameInputForm from '../QuizNameInputForm';
 import QuestionInputForm from '../QuestionInputForm';
 import OptionInputForm from '../OptionInputForm';
-import PasswordEntryForm from '../PasswordEntryForm';
+import PasswordForm from '../PasswordForm';
 import { Layout, Header, Navigation, Drawer, Content } from 'react-mdl';
 
 
@@ -40,19 +40,16 @@ const App = () => {
         </Drawer>
         <Content>
             <div>
-            <QuizStarHeader />
-
-            <UsernameForm />
-            <PasswordEntryForm />
-            <QuizNameInputForm />
-            <QuestionInputForm/>
-            <OptionInputForm/>
-            <Route path="/" exact strict component={Home} />
-          <Route path="/Login" exact strict component={Login} />
-          <Route path="/Profile"  exact strict component={Profile} />
-          <Route path="/CreateQuiz" exact strict component={QuizCreate} />
-          <Route path="/TakeQuiz" exact strict component={QuizTake} />
-         </div>
+                <QuizStarHeader />
+                <QuizNameInputForm />
+                <QuestionInputForm/>
+                <OptionInputForm/>
+              <Route path="/" exact strict component={Home} />
+              <Route path="/Login" exact strict component={Login} />
+              <Route path="/Profile"  exact strict component={Profile} />
+              <Route path="/CreateQuiz" exact strict component={QuizCreate} />
+              <Route path="/TakeQuiz" exact strict component={QuizTake} />
+            </div>
         </Content>
     </Layout>
      </Router> 
