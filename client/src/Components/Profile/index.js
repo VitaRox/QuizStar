@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import { useDropzone } from "react-dropzone";
 import "../App/App.css";
 
+// stateless function
+// not classes  (somewhat the same)
+// could be easier to integrate states as classes 
+// redux in stateless functions 
+
 function Profile() {
   const [files, setFiles] = useState([]);
 
