@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useDropzone } from "react-dropzone";
-import "../App/App.css";
+import "./Profile.css";
 
 // stateless function
 // not classes  (somewhat the same)
-// could be easier to integrate states as classes 
-// redux in stateless functions 
+// could be easier to integrate states as classes
+// redux in stateless functions
 
 function Profile() {
   const [files, setFiles] = useState([]);
@@ -25,14 +25,14 @@ function Profile() {
 
   const images = files.map((file) => (
     <div key={file.name}>
-      <div>
-        <img src={file.preview} style={{ width: "500px" }} alt="preview" />
+      <div className="Photo">
+        <img src={file.preview} style={{ width: "350px" }} alt="preview" />
       </div>
     </div>
   ));
 
   return (
-    <div className="App">
+    <div className="dragndrop">
       <div {...getRootProps()}>
         <input {...getInputProps()} />
         <p>Drop files here</p>

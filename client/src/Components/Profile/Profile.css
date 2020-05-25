@@ -1,0 +1,13 @@
+.Photo {
+  float: left;
+  margin-left: 30px;
+}
+
+.dragndrop {
+  font-style: italic;
+  width: 100px;
+  background: orange;
+  position: relative;
+  top: 20px;
+  left: 20px;
+}
