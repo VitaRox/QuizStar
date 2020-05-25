@@ -26,7 +26,7 @@ function Profile() {
   const images = files.map((file) => (
     <div key={file.name}>
       <div className="Photo">
-        <img src={file.preview} style={{ width: "300px" }} alt="preview" />
+        <img src={file.preview} style={{ width: "180px" }} alt="preview" />
       </div>
     </div>
   ));
@@ -42,31 +42,19 @@ function Profile() {
             rows="5"
           ></textarea>
         </div>
+        <button className="bioButton" type="submit">
+          submit bio
+        </button>
       </form>
+
+      <div>{images}</div>
 
       <div className="dragndrop" {...getRootProps()}>
         <input {...getInputProps()} />
         <p className="p1"> Drop files here </p>
       </div>
-
-      <div>{images}</div>
     </div>
   );
 }
 
 export default Profile;
-
-//button
-
-/* 
-
-
-
-<button type="button" class="btn btn-outline-primary">Primary</button>
-<button type="button" class="btn btn-outline-secondary">Secondary</button>
-
-
-
-
-
-*/
