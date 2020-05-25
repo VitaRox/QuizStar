@@ -26,17 +26,29 @@ function Profile() {
   const images = files.map((file) => (
     <div key={file.name}>
       <div className="Photo">
-        <img src={file.preview} style={{ width: "350px" }} alt="preview" />
+        <img src={file.preview} style={{ width: "300px" }} alt="preview" />
       </div>
     </div>
   ));
 
   return (
-    <div className="dragndrop">
-      <div {...getRootProps()}>
+    <div>
+      <form className="bio">
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">bio </label>
+          <textarea
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="5"
+          ></textarea>
+        </div>
+      </form>
+
+      <div className="dragndrop" {...getRootProps()}>
         <input {...getInputProps()} />
-        <p>Drop files here</p>
+        <p className="p1"> Drop files here </p>
       </div>
+
       <div>{images}</div>
     </div>
   );
@@ -44,18 +56,17 @@ function Profile() {
 
 export default Profile;
 
-/* import React from 'react';
-import "../App/App.css";
+//button
+
+/* 
 
 
 
-const Profile= ()=> {    
-    return(
-        <div>
-            <main>
-                <h1>Profile page Coming Soon!</h1>    
-            </main>
-        </div>
-        )
-}
-export default Profile; */
+<button type="button" class="btn btn-outline-primary">Primary</button>
+<button type="button" class="btn btn-outline-secondary">Secondary</button>
+
+
+
+
+
+*/
