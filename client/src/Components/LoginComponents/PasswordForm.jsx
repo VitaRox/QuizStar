@@ -21,7 +21,6 @@ function PasswordForm() {
           name="password"
           required
         />
-        <button type="submit" className="submitButton" onClick={password}>Submit your response.</button>
       </form>
     </div>
   );

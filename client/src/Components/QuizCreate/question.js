@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Answer from "../QuizCreate/answer";
+import OptionInputForm from '../QuizCreateComponents/OptionInputForm';
 
 class Question extends Component {
 	constructor(props){
@@ -25,7 +26,7 @@ class Question extends Component {
 	render(){
 		let elements = [];
 		for(var n = 0; n < this.state.answerCount; n++){
-			elements.push(<Answer answerNumber={n+1}/>);
+			elements.push(<OptionInputForm answerNumber={n+1}/>);
 		}
 
 		return(

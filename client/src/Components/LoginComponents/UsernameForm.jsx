@@ -26,7 +26,6 @@ function UsernameForm() {
           name="username"
           required
         />
-        <button type="submit" className="submitButton" onClick={username}>Submit your response.</button>
       </form>
     </div>
   );
