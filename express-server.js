@@ -3,7 +3,7 @@ const app = express();
 app.use(express.static('client'))
 
 // Add handling for alternate port to use in event 3200 is unavailable;
-const port = process.env.PORT || 3200;
+const port = 3200 || process.env.PORT;
 
 // Home GET route;
 app.get('/', function (req, res) {

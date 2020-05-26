@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import Question from "../QuizCreate/question";
-
-
+// import QuizCreateComponents from '.././QuizCreateComponents';
+// import OptionInputForm from '../QuizCreateComponents/OptionInputForm';
 class QuizCreate extends Component {
-    state = {
-    	questionCount: 1
+	state = {
+		questionCount: 1
 	}
 
 	addQuestions = () => {
