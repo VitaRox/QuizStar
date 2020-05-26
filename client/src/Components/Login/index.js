@@ -1,16 +1,21 @@
 import React, {useState, useEffect} from 'react';
 import PasswordForm from '../LoginComponents/PasswordForm';
 import UsernameForm from '../LoginComponents/UsernameForm';
+import {BrowserRouter as Router, Switch, Route} from 'react-mdl';
 
+'react-router-dom';
 
-const Login = () => {
+function Login() {
 
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
+  const [usernameInput, setUsernameInput] = useState("");
+  const [passwordInput, setPasswordInput] = useState("");
 
   useEffect(() => {
-    fetch("/")
+    // Send the values input by user to URL to parse login credentials/authorize;
+    fetch("/Login/:username/:password")
       .then(res => res.json())
       .then(
         (result) => {
@@ -24,6 +29,10 @@ const Login = () => {
       )
   }, []);
 
+  function displayUserResults() {
+    console.log(`This thing is passing ${usernameInput} and ${passwordInput} to back end.`);
+  }
+
   return(
       <div>
           <main>
@@ -35,8 +44,7 @@ const Login = () => {
                     Button below will submit all info entered into both of the above fields in this view
                     using an Express route (by calling GET)
                     */}
-                  {/*<button id="submitLoginCreds" type="submit" onClick={handleSubmit()}>Submit login credentials.</button>*/}
-                  {/*<button type="submit" className="submitButton" onClick={password}>Submit your response.</button>*/}
+                  <button id="submitLoginCreds" type="submit" onClick={useEffect}>Submit login credentials.</button>
           </main>
       </div>
       );

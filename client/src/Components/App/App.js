@@ -40,7 +40,7 @@ const App = () => {
         </Drawer>
         <Content>
             <div>
-                <QuizStarHeader />
+              <QuizStarHeader />
               <Route path="/" exact strict component={Home} />
               <Route path="/Login" exact strict component={Login} />
               <Route path="/Profile"  exact strict component={Profile} />
