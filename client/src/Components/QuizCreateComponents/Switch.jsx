@@ -15,7 +15,7 @@ function Switch() {
   };
 
   return (
-    <>
+    <div>
       <input
         checked={isOn}
         onChange={e => switched()}
@@ -29,8 +29,51 @@ function Switch() {
       >
         <span className={`react-switch-button`} />
       </label>
-    </>
+    </div>
   );
 };
 
 export default Switch;
+
+/*
+//New
+
+import React, {useState, useEffect, Component} from 'react';
+import './Switch.css';
+
+class Switch extends Component {
+  constructor(props){
+    super(props);
+  }
+
+  state = {
+    isOn: false
+  }
+
+  switched = () => {
+    this.setState({isOn: !this.state.isOn})
+  }
+
+  render(){
+
+    return(
+      <div>
+        <input
+          checked={this.state.isOn}
+          onChange={ () => this.switched()}
+          className="react-switch-checkbox"
+          //id={`react-switch-new`}
+          type="radio"
+        />
+        <label
+          className="react-switch-label"
+          htmlFor={`react-switch-new`}
+        >
+          <span className={`react-switch-button`} />
+        </label>
+      </div>
+    )
+  }
+}
+
+export default Switch;*/

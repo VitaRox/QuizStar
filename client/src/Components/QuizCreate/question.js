@@ -26,7 +26,7 @@ class Question extends Component {
 	render(){
 		let elements = [];
 		for(var n = 0; n < this.state.answerCount; n++){
-			elements.push(<OptionInputForm answerNumber={n+1}/>);
+			elements.push(<Answer questionNumber = {this.props.questionNumber} answerNumber={n+1}/>);
 		}
 
 		return(
