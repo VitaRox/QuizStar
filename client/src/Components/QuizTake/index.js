@@ -1,11 +1,11 @@
 import React from 'react';
 
 
-const QuizTake= ()=> {    
+const QuizTake= ()=> {
     return(
         <div>
             <main>
-                <h1>Quiz Taking page Coming Soon!</h1>    
+                <h1>Temp Quiz View!</h1>
             </main>
         </div>
         )
