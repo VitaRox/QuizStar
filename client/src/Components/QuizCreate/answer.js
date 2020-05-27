@@ -15,7 +15,7 @@ class Answer extends Component {
 			<div>
 				<label for="answer">Answer {this.props.answerNumber}:</label>
 				<input type="text" id="answer" name="answer"/>
-				<Switch id={switchID} value={this.props.answerNumber}/>
+				<input type="radio" id="correctAnswer" name="correctAnswer" value={this.props.answerNumber}/><br/>
 			</div>
 		)
 	}
@@ -24,3 +24,4 @@ class Answer extends Component {
 export default Answer;
 
 //<input type="radio" id="correctAnswer" name="correctAnswer" value={this.props.answerNumber}/><br/>
+//<Switch id={switchID} value={this.props.answerNumber}/>

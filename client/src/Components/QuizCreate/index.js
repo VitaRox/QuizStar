@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Question from "../QuizCreate/question";
+import axios from 'axios';
 // import QuizCreateComponents from '.././QuizCreateComponents';
 // import OptionInputForm from '../QuizCreateComponents/OptionInputForm';
 class QuizCreate extends Component {
@@ -19,6 +20,17 @@ class QuizCreate extends Component {
 		}	
 	}
 
+	submit = () => {
+    //event.preventDefault();
+	    axios.post('http://localhost:3200/quizcreate', this.state)
+			.then(res => {
+				console.log(res);
+				console.log(res.data);
+			})
+		console.log("Hello")
+
+	}
+
 	render(){
 		let elements = [];
 		for(var n = 0; n < this.state.questionCount; n++){
@@ -33,7 +45,8 @@ class QuizCreate extends Component {
 	            	<button id="removeQuestion" onClick={ () => this.removeQuestions()}>Question -</button>
 	            	<button id="addQuestion" onClick={ () => this.addQuestions()}>Question +</button>
 	            	{elements}
-	            	<button id="addQuestion" onClick={ () => this.addQuestions()}>Question +</button>
+	            	<button id="addQuestion" onClick={ () => this.addQuestions()}>Question +</button><br/>
+	            	<input type="submit" value="Submit" onClick={ () => this.submit()}/>
 	            </main>
 	        </div>
 	    )

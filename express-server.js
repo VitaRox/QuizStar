@@ -37,4 +37,9 @@ app.delete('/user', function (req, res) {
   res.send('Got a DELETE request at /user')
 });
 
+app.post('/quizcreate', function (req, res) {
+  res.send('Create a quiz')
+  console.log('Create a quiz')
+});
+
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
