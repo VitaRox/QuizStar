@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import SubjectCarousel from './Carousel';
+//import SubjectCarousel from './Carousel';
 //import {Card, CardImg, CardText, CardBody,CardTitle, CardSubtitle, Button} from 'reactstrap';
 
 export default class Subject extends Component {
@@ -36,7 +36,6 @@ render()
     {
           return (
             <div>
-            <div><SubjectCarousel/></div>
             <div className="subject-content">
               {this.displaySubjects(this.state.subjects)}
               </div>
