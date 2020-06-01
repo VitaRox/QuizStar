@@ -3,7 +3,7 @@ import PasswordForm from '../LoginComponents/PasswordForm';
 import UsernameForm from '../LoginComponents/UsernameForm';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import database from '../../MiniTestJsonDB';
-import axios from 'axios';
+
 
 function Login() {
 
@@ -19,23 +19,6 @@ function Login() {
 
   // payload represents the array of data that the db will return upon successful (!error) condition;
   const [payload, setPayload] = useState([])
-
-
-  // useEffect(async() => {
-  //   // Send the values input by user to URL to parse login credentials/authorize;
-  //   fetch("/Login/:username/:password")
-  //     .then(res => res.json())
-  //     .then(
-  //       (result) => {
-  //         setIsLoaded(true);
-  //         setItems(result.items);
-  //       },
-  //       (error) => {
-  //         setIsLoaded(true);
-  //         setError(error);
-  //       }
-  //     )
-  // }, []);
 
   // Create 2 values to represent username/password user enters into these components;
   const username = setUsernameInput(<UsernameForm username />);
@@ -72,40 +55,6 @@ function Login() {
       return response.json(); // parses JSON response into native JavaScript objects
     }
       });
-      // const response = await database(database.filter(database.username === username)
-      //   && database.filter(database.password === password));
-  //     if (!error) {
-  //       setIsLoaded(true);
-  //       setPayload();
-  //       console.log(response);
-  //       setPayload(response);
-  //     } else {
-  //       alert("Incorrect username or password.");
-  //     }
-  //   }
-  //   fetchData();
-  // }, []); // Or [] if effect doesn't need props or state
-
-
-
-  // Displays user data if password and username are correct;
-  // Returns error message otherwise;
-  // const displayUserData = async() => {
-  //   console.log(`This thing is passing ${username} and ${password} to back-end.`);
-  //   const userData = await fetch(
-  //     "MiniTestJsonDB.js"
-  //   );
-  //   if(database.username.filter(username) && database.password.filter(password)) {
-  //     const items = await userData.json();
-  //     setError(false);
-  //     setIsLoaded(true);
-  //     console.log(items);
-  //   } else if(!database.username.filter(username)) {
-  //     console.log(`${username} is not in our system.`);
-  //   } else {
-  //     console.log("Incorrect password.  Try again.");
-  //   }
-  // };
 
   return(
       <div>

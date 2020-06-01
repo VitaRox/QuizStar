@@ -1,0 +1,41 @@
+.Photo {
+  float: left;
+  margin-left: 30px;
+  margin-top: 70px;
+}
+
+.dragndrop {
+  font-style: italic;
+  width: 100px;
+  background: orange;
+  float: left;
+  margin-top: 50px;
+  margin-left: 30px;
+  border-style: outset;
+}
+
+.bio {
+  float: right;
+
+  padding-right: 60px;
+  padding-top: 300px;
+}
+
+label {
+  font-style: italic;
+  color: goldenrod;
+}
+
+div {
+}
+
+.p1 {
+  margin-left: 4px;
+  color: darkslategrey;
+}
+
+.bioButton {
+  margin-left: 70px;
+  margin-top: 10px;
+  color: orange;
+}

@@ -19,7 +19,13 @@
   "dependencies": {
     "axios": "^0.19.2",
     "express": "^4.17.1",
+<<<<<<< HEAD
     "mongoose": "^5.9.9"
   },
   "devDependencies": {}
+=======
+    "mongoose": "^5.9.9",
+    "morgan": "^1.10.0"
+  }
+>>>>>>> 61026bb06e34a2f7e2feb082f0d07227b615f9d4
 }
