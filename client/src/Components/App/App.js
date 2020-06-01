@@ -46,6 +46,7 @@ const App = () => {
               <Route path="/" exact strict component={Home} />
               <Route path="/Login" exact strict component={Login} />
               <Route path="/Profile"  exact strict component={Profile} />
+              <Route path="/subjects"  exact strict component={Subject} />
               <Route path="/CreateQuiz" exact strict component={QuizCreate} />
               <Route path="/TakeQuiz" exact strict component={QuizTake} />
             </div>
