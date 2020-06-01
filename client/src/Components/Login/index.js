@@ -2,8 +2,9 @@ import React, {useState, useEffect} from 'react';
 import PasswordForm from '../LoginComponents/PasswordForm';
 import UsernameForm from '../LoginComponents/UsernameForm';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import database from '../../MiniTestJsonDB';
-
+// import database from '../../MiniTestJsonDB';
+import service from '../../../../server';
+import MONGODB_URI from 'server';
 
 function Login() {
 
@@ -11,7 +12,7 @@ function Login() {
   const [error, setError] = useState(false);
   // isLoaded lets the front-end know that the user is now successfully logged in;
   // If user is logged in, unnecessary to display login forms;
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoaded, setLoaded] = useState(false);
 
   // The following 2 represent the info the user inputs in order to login
   const [usernameInput, setUsernameInput] = useState("");
@@ -35,11 +36,11 @@ function Login() {
     }
   };
 
-  // Handles click, sends login data back;
+  // Sends login data back to our API, which in turn attempts
+  // to fetch said data from MongoDB;
   useEffect(() => {
     async function fetchData() {
-      // You can await here
-      const response = await fetch('../../MiniTestJsonDB.js', {
+      const response = await fetch(MONGODB_URI, {
         method: 'GET', // *GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, *cors, same-origin
         cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -55,6 +56,21 @@ function Login() {
       return response.json(); // parses JSON response into native JavaScript objects
     }
       });
+
+  // Our click handler for login-credentials-submission event;
+  // Sends the user input data to API for validation and retrieval
+  // of related account info, if successful;
+  // Updates all related state Hooks;
+  const handleClick = () => {
+
+
+
+
+
+    login();
+
+  };
+
 
   return(
       <div>

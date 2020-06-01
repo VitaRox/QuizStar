@@ -28,8 +28,7 @@ app.use(express.urlencoded({extended: false}));
 /*
  A route to log the user in;
  'username' and 'password' params are passed in via React
- components, UsernameForm and PasswordEntryForm, which are
- found inside the React component, Login;
+ components UsernameForm and PasswordEntryForm (inside Login);
 */
 app.get(`/login/:submit`, (req, res) => {
   let username = req.params.username;
@@ -57,3 +56,5 @@ app.use(morgan('tiny'));
 
 // launch our backend into a port
 app.listen(PORT, console.log(`LISTENING ON PORT ${PORT}`));
+
+exports.MONGODB_URI = MONGODB_URI;

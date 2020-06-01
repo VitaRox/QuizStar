@@ -13,19 +13,16 @@
   "author": "Group B",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/VitaRox/WebAppWinning/issues"
+    "url": "https://github.com/VitaRox/QuizStar/issues"
   },
-  "homepage": "https://github.com/VitaRox/WebAppWinning#readme",
+  "homepage": "https://github.com/VitaRox/QuizStar#readme",
   "dependencies": {
     "axios": "^0.19.2",
     "express": "^4.17.1",
-<<<<<<< HEAD
     "mongoose": "^5.9.9"
   },
-  "devDependencies": {}
-=======
+  "devDependencies": {
     "mongoose": "^5.9.9",
     "morgan": "^1.10.0"
   }
->>>>>>> 61026bb06e34a2f7e2feb082f0d07227b615f9d4
 }
