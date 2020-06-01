@@ -1,8 +1,7 @@
 import React from 'react';
 import Login from '../Login';
-import MiniTestJsonDb from 'MiniTestJsonDB';
-//home page
 
+//home page
 const Home= ()=> {    
     return(
         <div> 
