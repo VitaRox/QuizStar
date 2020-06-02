@@ -1,11 +1,5 @@
 # QuizStar:
 
-cd PortfolioPiece
+A repo for our Web app practicum course.
 
-node server.js
-
-cd into client
-
-npm install
-
-npm start
+Team members: Jen Villacis, Luca Andolina, Yunao Guo, Derek Hendrick, Vita A. Harvey
