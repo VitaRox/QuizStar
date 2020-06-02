@@ -40,18 +40,6 @@ app.get('/subjects', (req, res) =>{
 
 });
 
-//get quiz
-app.get('/quizzes'), (req, res) =>{
-  Quiz.find({}).sort({})
-    .then((data) =>{
-      console.log('Data: ',data);
-      res.json(data);
-    })
-    .catch((error) =>{
-      console.log('error');
-    });
-}
-
 //quiz route
 app.post('/quizcreate', cors(), (req, res) => {
       console.log(JSON.stringify(req.body));
