@@ -43,17 +43,15 @@ app.get('/subjects', (req, res) =>{
 //quiz route
 app.post('/quizcreate', cors(), (req, res) => {
       console.log(JSON.stringify(req.body));
-
-      var quiz = new Quiz({
-        quizName: req.body.quizName
-      })
-
-      quiz.save(function(err, result){
-        if(err) {return next (err)}
-        res.status(201).json(result)
-      });
-})
-
+      var quiz = new Quiz (req.body);
+      quiz.save()
+        .then(item =>{
+          res.send("Saved to Database");
+        })
+        .catch(err =>{
+          res.status(400).send("unable to save to DB");
+        });
+});
 
 //HTTP request logger
 app.use(morgan('tiny'));

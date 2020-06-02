@@ -28,7 +28,7 @@ class QuizCreate extends Component {
       });
 }
 
-	submit = event => {
+	submit = () => {
     //event.preventDefault();
 	    axios.post('/quizcreate', this.state)
 			.then(res => {

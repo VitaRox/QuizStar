@@ -31,7 +31,7 @@ class Question extends Component {
 
 		return(
 			<div>
-				<form action="" onSubmit={this.submit}>
+				<form onSubmit={this.submit}>
 					<label for="question">Question {this.props.questionNumber}:</label>
 					<input type="text" id="question" name="question" onChange={this.handleChange}/><br/>
 					{elements}
