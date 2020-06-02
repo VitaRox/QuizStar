@@ -3,6 +3,7 @@ import { useDropzone } from "react-dropzone";
 import "./Profile.css";
 import axios from "axios";
 
+
 // stateless function
 // not classes  (somewhat the same)
 // could be easier to integrate states as classes
@@ -10,6 +11,7 @@ import axios from "axios";
 
 function Profile() {
   const [files, setFiles] = useState([]);
+
   const [any, setAny] = useState("a");
   let staticConst = "";
   const processed = (file) => {

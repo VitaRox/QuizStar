@@ -1,11 +1,13 @@
-const mongoose = require("mongoose");
-const express = require("express");
-const morgan = require("morgan");
-const path = require("path");
-const Subject = require("./client/src/models/Subject");
+const mongoose = require('mongoose');
+const express = require('express');
+const morgan = require('morgan');
+const path = require('path');
+const Subject = require('./client/src/models/Subject')
+
 
 const app = express();
 const PORT = process.env.PORT || 8080;
+
 
 const MONGODB_URI =
   "mongodb+srv://quizstar:quizstar1@mongodbqs-sdfsq.mongodb.net/test?retryWrites=true&w=majority";
