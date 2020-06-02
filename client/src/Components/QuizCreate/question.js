@@ -20,7 +20,7 @@ class Question extends Component {
 	removeAnswer = () => {
 		if(this.state.answerCount > 2){
 			this.setState({answerCount: this.state.answerCount-1})
-		}	
+		}
 	}
 
 	render(){
@@ -31,9 +31,9 @@ class Question extends Component {
 
 		return(
 			<div>
-				<form action="">
+				<form action="" onSubmit={this.submit}>
 					<label for="question">Question {this.props.questionNumber}:</label>
-					<input type="text" id="question" name="question"/><br/>
+					<input type="text" id="question" name="question" onChange={this.handleChange}/><br/>
 					{elements}
 				</form>
 				<button id="removeAnswer" onClick={ () => this.removeAnswer()}>Answer -</button>

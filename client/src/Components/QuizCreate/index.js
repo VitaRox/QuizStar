@@ -17,12 +17,20 @@ class QuizCreate extends Component {
 	removeQuestions = () => {
 		if(this.state.questionCount > 1){
 			this.setState({questionCount: this.state.questionCount-1})
-		}	
+		}
 	}
 
-	submit = () => {
+	handleChange = event => {
+      const value = event.target.value;
+      this.setState({
+          ...this.state,
+        [event.target.name]: value
+      });
+}
+
+	submit = event => {
     //event.preventDefault();
-	    axios.post('http://localhost:3200/quizcreate', this.state)
+	    axios.post('/quizcreate', this.state)
 			.then(res => {
 				console.log(res);
 				console.log(res.data);
@@ -38,10 +46,10 @@ class QuizCreate extends Component {
 		}
 
 		return(
-	        <div>
+	        <div className= "addQuiz-Form">
 	            <main>
 					<label for="quizName">Quiz Name:</label>
-					<input type="text" id="quizName" name="quizName"/><br/>
+					<input type="text" id="quizName" name="quizName" onChange={this.handleChange}/><br/>
 	            	<button id="removeQuestion" onClick={ () => this.removeQuestions()}>Question -</button>
 	            	<button id="addQuestion" onClick={ () => this.addQuestions()}>Question +</button>
 	            	{elements}
