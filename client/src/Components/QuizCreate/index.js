@@ -49,11 +49,10 @@ class QuizCreate extends Component {
 	        <div className= "addQuiz-Form">
 	            <main>
 					<label for="quizName">Quiz Name:</label>
-					<input type="text" id="quizName" name="quizName" onChange={this.handleChange}/><br/>
+					<input type="text" id="quizName" name="quizName" value={this.state.quizName} onChange={this.handleChange}/><br/>
 	            	<button id="removeQuestion" onClick={ () => this.removeQuestions()}>Question -</button>
 	            	<button id="addQuestion" onClick={ () => this.addQuestions()}>Question +</button>
 	            	{elements}
-	            	<button id="addQuestion" onClick={ () => this.addQuestions()}>Question +</button><br/>
 	            	<input type="submit" value="Submit" onClick={ () => this.submit()}/>
 	            </main>
 	        </div>
