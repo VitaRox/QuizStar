@@ -13,9 +13,9 @@ class Answer extends Component {
 
 		return(
 			<div>
-				<label for="answer">Answer {this.props.answerNumber}:</label>
-				<input type="text" id="answer" name="answer"/>
-				<input type="radio" id="correctAnswer" name="correctAnswer" value={this.props.answerNumber}/><br/>
+				<label for="answer">Answer {this.props.answer}:</label>
+				<input type="text" id="answer" name="answer" onChange={this.handleChange}/>
+				<input type="radio" id="correctAnswer" name="correctAnswer" value={this.props.correctAnswer} onChange={this.handleChange}/><br/>
 			</div>
 		)
 	}

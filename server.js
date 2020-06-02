@@ -3,8 +3,10 @@ const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
 const Subject = require('./client/src/models/Subject')
-
+const Quiz = require('./client/src/models/Quiz')
+var cors = require('cors');
 const app = express();
+app.use(cors());
 const PORT = process.env.PORT || 8080;
 
 
@@ -38,6 +40,25 @@ app.get('/subjects', (req, res) =>{
 
 });
 
+//quiz route
+app.post('/quizcreate', cors(), (req, res) => {
+      console.log(JSON.stringify(req.body));
+
+      var quiz = new Quiz({
+        quizName: req.body.quizName,
+        questions:[{
+            question: req.body.question,
+            correctAnswer: req.body.correctAnswer,
+            answers: [{
+              answer: req.body.answer}]
+      }]
+    })
+
+      quiz.save(function(err, result){
+        if(err) {return next (err)}
+        res.status(201).json(result)
+      });
+});
 
 //HTTP request logger
 app.use(morgan('tiny'));
