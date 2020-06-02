@@ -40,17 +40,36 @@ app.get('/subjects', (req, res) =>{
 
 });
 
+//get quiz
+app.get('/quizzes'), (req, res) =>{
+  Quiz.find({}).sort({})
+    .then((data) =>{
+      console.log('Data: ',data);
+      res.json(data);
+    })
+    .catch((error) =>{
+      console.log('error');
+    });
+}
+
 //quiz route
 app.post('/quizcreate', cors(), (req, res) => {
       console.log(JSON.stringify(req.body));
-      var quiz = new Quiz (req.body);
-      quiz.save()
-        .then(item =>{
-          res.send("Saved to Database");
-        })
-        .catch(err =>{
-          res.status(400).send("unable to save to DB");
-        });
+
+      var quiz = new Quiz({
+        quizName: req.body.quizName,
+        questions:[{
+            question: req.body.question,
+            correctAnswer: req.body.correctAnswer,
+            answers: [{
+              answer: req.body.answer}]
+      }]
+    })
+
+      quiz.save(function(err, result){
+        if(err) {return next (err)}
+        res.status(201).json(result)
+      });
 });
 
 //HTTP request logger
