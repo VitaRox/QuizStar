@@ -2,12 +2,9 @@
   "name": "webappwinning",
   "version": "1.0.0",
   "description": "A project for group B for AD 410, web app practicum.",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "server": "nodemon server.js",
-    "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -20,13 +17,8 @@
   },
   "homepage": "https://github.com/VitaRox/WebAppWinning#readme",
   "dependencies": {
-    "axios": "^0.19.2",
     "express": "^4.17.1",
-    "express-fileupload": "^1.1.7-alpha.3",
-    "mongoose": "^5.9.9"
-  },
-  "devDependencies": {
-    "concurrently": "^5.2.0",
-    "nodemon": "^2.0.3"
+    "mongoose": "^5.9.9",
+    "morgan": "^1.10.0"
   }
 }
