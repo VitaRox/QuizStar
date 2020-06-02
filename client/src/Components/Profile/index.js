@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import "./Profile.css";
+import axios from "axios";
+
 
 // stateless function
 // not classes  (somewhat the same)
@@ -10,9 +12,28 @@ import "./Profile.css";
 function Profile() {
   const [files, setFiles] = useState([]);
 
+  const [any, setAny] = useState("a");
+  let staticConst = "";
+  const processed = (file) => {
+    console.log(file.substring(100, 200));
+    setAny("Hello");
+    console.log(any);
+    // axios.post('https://example.com/any',{img:profileImage})
+  };
+  // useEffect(()=>processed('string'))
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*",
     onDrop: (acceptedFiles) => {
+      const reader = new FileReader();
+
+      reader.onload = function () {
+        processed(reader.result);
+        axios.post("https://example", {
+          base64Img: reader.result,
+        });
+      };
+      reader.readAsDataURL(acceptedFiles[0]);
+
       setFiles(
         acceptedFiles.map((file) =>
           Object.assign(file, {
