@@ -3,6 +3,7 @@ const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
 const Subject = require('./client/src/models/Subject')
+const Quiz = require('./client/src/models/Quiz')
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -24,6 +25,21 @@ mongoose.connect(MONGODB_URI,{useNewUrlParser: true,
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+
+app.get('/quiz', (req, res) =>{
+
+  Quiz.find({}).sort({})
+    .then((data) =>{
+      console.log('Data Quiz: ',data);
+      res.json(data);
+    })
+    .catch((error) =>{
+      console.log('error');
+    });
+
+});
+
+
 
 app.get('/subjects', (req, res) =>{
 
