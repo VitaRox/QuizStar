@@ -1,5 +1,5 @@
 {
-  "name": "webappwinning",
+  "name": "quizstar",
   "version": "1.0.0",
   "description": "A project for group B for AD 410, web app practicum.",
   "main": "index.js",
@@ -8,16 +8,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/VitaRox/WebAppWinning.git"
+    "url": "git+https://github.com/VitaRox/QuizStar.git"
   },
   "author": "Group B",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/VitaRox/WebAppWinning/issues"
+    "url": "https://github.com/VitaRox/QuizStar/issues"
   },
-  "homepage": "https://github.com/VitaRox/WebAppWinning#readme",
+  "homepage": "https://github.com/VitaRox/QuizStar#readme",
   "dependencies": {
+    "axios": "^0.19.2",
     "express": "^4.17.1",
+    "mongoose": "^5.9.9"
+  },
+  "devDependencies": {
     "mongoose": "^5.9.9",
     "morgan": "^1.10.0"
   }

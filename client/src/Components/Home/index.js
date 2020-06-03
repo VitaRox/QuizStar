@@ -2,7 +2,6 @@ import React from 'react';
 import Login from '../Login';
 
 //home page
-
 const Home= ()=> {    
     return(
         <div> 
