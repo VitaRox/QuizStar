@@ -7,8 +7,6 @@ const Subject = require('./client/src/models/Subject')
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-
-
 const MONGODB_URI = 'mongodb+srv://quizstar:quizstar1@mongodbqs-sdfsq.mongodb.net/test?retryWrites=true&w=majority'
 //'mongodb+srv://quizstar:quizstar1@mongodbqs-sdfsq.mongodb.net/test?retryWrites=true&w=majority'
 
@@ -57,4 +55,4 @@ app.use(morgan('tiny'));
 // launch our backend into a port
 app.listen(PORT, console.log(`LISTENING ON PORT ${PORT}`));
 
-exports.MONGODB_URI = MONGODB_URI;
+
