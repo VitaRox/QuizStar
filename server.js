@@ -7,7 +7,8 @@ const Subject = require('./client/src/models/Subject')
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-const MONGODB_URI = 'mongodb+srv://quizstar:quizstar1@mongodbqs-sdfsq.mongodb.net/test?retryWrites=true&w=majority'
+const MONGODB_URI =
+  'mongodb+srv://quizstar:quizstar1@mongodbqs-sdfsq.mongodb.net/test?retryWrites=true&w=majority'
 //'mongodb+srv://quizstar:quizstar1@mongodbqs-sdfsq.mongodb.net/test?retryWrites=true&w=majority'
 
 mongoose.connect(MONGODB_URI,{useNewUrlParser: true,
@@ -48,6 +49,12 @@ app.get('/subjects', (req, res) =>{
     });
 });
 
+// demo endpoint
+app.post("/updateUser", (req, res) => {
+  // maybe mongoose implementation?
+  models.User.update(req.body.user);
+  // req.body.base64Img
+});
 
 //HTTP request logger
 app.use(morgan('tiny'));
