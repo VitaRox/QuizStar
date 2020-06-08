@@ -51,31 +51,6 @@ app.get('/subjects', (req, res) =>{
     });
 });
 
-//quiz route
-app.post('/add-quiz', cors(), (req, res) => {
-      console.log(JSON.stringify(req.body));
-
-      var quiz = new Quiz({
-        quizName: req.body.quizName,
-        quizCreator: req.body.quizCreator,
-        question: req.body.question,
-        answers:[{
-          answer1: req.body.answer1,
-          answer2: req.body.answer2,
-          answer3: req.body.answer3,
-          answer4: req.body.answer4
-        }],
-        correct:req.body.correct
-    })
-
-      quiz.save(function(err, result){
-        if(err) {
-          return next (err)
-        }
-        res.status(201).json(result)
-      });
-});
-
 
 // demo endpoint
 app.post("/updateUser", (req, res) => {
