@@ -31,7 +31,7 @@ function Login() {
   };
 
   // This const refers to the url of the service we are contacting;
-  const apiURL = "https://localhost:8080/";
+  const apiURL = "https://localhost:8080";
 
   // Our click handler for login-credentials-submission event;
   // Sends the user input data to API for validation and retrieval
@@ -50,7 +50,7 @@ function Login() {
     })
       .then((response) => response.json()) // parses JSON response into native JavaScript objects
       .then(setPayload(response))
-      .then(requestUserInfo(response));
+      .then(requestUserInfo(this.response));
   });
 
   // This method retrieves server response with the provided token;
