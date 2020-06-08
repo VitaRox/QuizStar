@@ -3,17 +3,20 @@ const Schema = mongoose.Schema;
 
 //create schema
 const QuestionSchema = new mongoose.Schema({
+
  description: String,
  answers: [
-   {text: String,
-     required: true
+   {type: String,
+     content:String
    },
-   isCorrect:{
-     type: Boolean,
-     required: true,
-     default: false
-   }
-
+   {type: String,
+     content:String
+   },
+   {type: String,
+     content:String
+   },
+   {type: String,
+     content:String
    }
  ]
 })

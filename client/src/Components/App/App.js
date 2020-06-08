@@ -9,6 +9,7 @@ import Home from "../Home/index"
 import QuizStarHeader from '../QuizStarHeader';
 import { Layout, Header, Navigation, Drawer, Content } from 'react-mdl';
 import Subject from "../Subject/SubjectList";
+import QuizView from "../QuizTake/index.js"
 
 const App = () => {
   return (
@@ -29,9 +30,9 @@ const App = () => {
         <Drawer title="QuizStar">
             <Navigation>
              <Link to="/Login">Login</Link>
-             <Link to="/Profile">Profile</Link>   
-             <Link to="/CreateQuiz">Create Quiz</Link>   
-             <Link to="/TakeQuiz">Take Quiz</Link>    
+             <Link to="/Profile">Profile</Link>
+             <Link to="/CreateQuiz">Create Quiz</Link>
+             <Link to="/TakeQuiz">Take Quiz</Link>
              <Link to="/Login">Login</Link>
              <Link to="/Profile">Profile</Link>
              <Link to="/subjects">Browse Quizzes</Link>
@@ -48,7 +49,7 @@ const App = () => {
               <Route path="/Profile"  exact strict component={Profile} />
               <Route path="/subjects"  exact strict component={Subject} />
               <Route path="/CreateQuiz" exact strict component={QuizCreate} />
-              <Route path="/TakeQuiz" exact strict component={QuizTake} />
+              <Route path="/TakeQuiz" exact strict component={QuizView} />
             </div>
         </Content>
     </Layout>
