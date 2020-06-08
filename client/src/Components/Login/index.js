@@ -12,9 +12,7 @@ function Login() {
   const [error, setError] = useState(false);
   // isLoaded lets the front-end know that the user is now successfully logged in;
   // If user is logged in, unnecessary to display login forms;
-  const [isLoaded, setLoaded] = useState(false);
-
-  const [loginCreds, setLoginCreds] = useState("");
+  const [isLoaded, setLoaded] = useState(true);
 
   // The following 2 represent the info the user inputs in order to login
   const [usernameInput, setUsernameInput] = useState("");
@@ -61,8 +59,6 @@ function Login() {
       })
     })
       .then((response) => response.json());
-
-
 
   }
   // This is used to display the login forms in this view if the user has
