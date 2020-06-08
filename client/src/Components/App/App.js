@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "../Login/index";
 import Profile from "../Profile/index";
 import QuizCreate from "../QuizCreate/index";
