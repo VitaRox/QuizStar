@@ -2,10 +2,11 @@ const mongoose = require('mongoose');
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
-const Subject = require('./client/src/models/Subject')
-
 const app = express();
 const PORT = process.env.PORT || 8080;
+var cors = require('cors');
+const Subject = require('./client/src/models/Subject');
+const Quiz = require('./client/src/models/Question');
 
 const MONGODB_URI =
   'mongodb+srv://quizstar:quizstar1@mongodbqs-sdfsq.mongodb.net/test?retryWrites=true&w=majority'
@@ -23,6 +24,7 @@ mongoose.connect(MONGODB_URI,{useNewUrlParser: true,
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+app.use(cors());
 
 /*
  A route to log the user in;
@@ -48,6 +50,32 @@ app.get('/subjects', (req, res) =>{
       console.log('error');
     });
 });
+
+//quiz route
+app.post('/add-quiz', cors(), (req, res) => {
+      console.log(JSON.stringify(req.body));
+
+      var quiz = new Quiz({
+        quizName: req.body.quizName,
+        quizCreator: req.body.quizCreator,
+        question: req.body.question,
+        answers:[{
+          answer1: req.body.answer1,
+          answer2: req.body.answer2,
+          answer3: req.body.answer3,
+          answer4: req.body.answer4
+        }],
+        correct:req.body.correct
+    })
+
+      quiz.save(function(err, result){
+        if(err) {
+          return next (err)
+        }
+        res.status(201).json(result)
+      });
+});
+
 
 // demo endpoint
 app.post("/updateUser", (req, res) => {

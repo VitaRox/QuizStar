@@ -4,22 +4,20 @@ const Schema = mongoose.Schema;
 //create schema
 const QuestionSchema = new mongoose.Schema({
 
- description: String,
- answers: [
-   {type: String,
-     content:String
-   },
-   {type: String,
-     content:String
-   },
-   {type: String,
-     content:String
-   },
-   {type: String,
-     content:String
-   }
- ]
-})
+  quizName: String,
+   quizCreator: String,
+   quizCreateDate: Date,
+   question: [{
+       answers: [
+         {answer1: String,
+          answer2: String,
+          answer3: String,
+          answer4: String,
+         }]
+     }],
+     correct:String
+ });
+
 
 //create model for todo
 const Quiz = mongoose.model('Quiz', QuestionSchema);
