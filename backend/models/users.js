@@ -1,20 +1,18 @@
-const mongoose = require("mongoose");
+import mongoose from 'mongoose'
 
-const Schema = mongoose.Schema;
-
-let usersSchema = new Schema({
+const UserSchema = new mongoose.Schema({
   userName: {
-    type: String
-  },
-  phone: {
-    type: String
+    type: String,
+    required: 'Name is required'
   },
   active: {
     type: Boolean
   },
-  emailAddress:{
+  email:{
     type: String,
+    unique: 'Email already exists',
     lowercase: true,
+    required: 'Email is required'
   },
   email_verified: {
     type: Boolean,
@@ -24,12 +22,15 @@ let usersSchema = new Schema({
     type: String,
     default:null
   },
-  password: {
+  hashed_password: {
     type: String,
+    required: "Password is required"
   },
-  password_reset_token: {
-    type: String,
-    default:null
+  salt: String,
+  updated: Date,
+  created: {
+    type: Date,
+    default: Date.now
   },
   phone:{ 
     type: String,
@@ -46,15 +47,7 @@ let usersSchema = new Schema({
     enum: ['M', 'F', 'NA', null],
     required: false,
     default: null
-},
-  quizHistory: {
-    type: Number,
-    default: 0
-  },
-  acct_created_at: { 
-    type: Date, 
-    default: Date.now 
-  },
+}
 });
 
-module.exports = mongoose.model("User", usersSchema);
+module.exports = mongoose.model("User", UserSchema);
