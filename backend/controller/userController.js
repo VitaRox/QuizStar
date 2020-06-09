@@ -71,6 +71,7 @@ const update = async (req, res) => {
 export default {
   create,
   userByID,
+  list,
   read,
   update
 }
