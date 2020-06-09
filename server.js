@@ -3,13 +3,12 @@ const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
 const Subject = require('./client/src/models/Subject')
-
+const Schema = mongoose.Schema;
 const app = express();
 const PORT = process.env.PORT || 8080;
 
 const MONGODB_URI =
   'mongodb+srv://quizstar:quizstar1@mongodbqs-sdfsq.mongodb.net/test?retryWrites=true&w=majority'
-//'mongodb+srv://quizstar:quizstar1@mongodbqs-sdfsq.mongodb.net/test?retryWrites=true&w=majority'
 
 mongoose.connect(MONGODB_URI,{useNewUrlParser: true,
   useUnifiedTopology:true})
@@ -21,8 +20,43 @@ mongoose.connect(MONGODB_URI,{useNewUrlParser: true,
       process.exit();
    });
 
+// Defines the model of the Schema that represents the user's data;
+let userSchema = new Schema({
+  _id: {
+    type: String
+  },
+  isActive: {
+    type: Boolean
+  },
+  picture: {
+    type:String
+  },
+  age: {
+    type: Number
+  },
+  username: {
+    type: String
+  },
+  gender: {
+    type: String
+  },
+  email: {
+    type: String
+  },
+  phone: {
+    type: String
+  },
+  registered: {
+    type: Boolean
+  }
+});
+
+
+
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+
+
 
 /*
  A route to log the user in;
@@ -35,6 +69,7 @@ app.get(`/login/:submit`, (req, res) => {
   console.log("If you're reading this, you've had a successful login submission.");
   res.status(200).send(`Welcome! You've logged in using ${username} (USERNAME) and ${password} (PASSWORD)
   .`);
+
 });
 
 // Retrieves list of quiz subjects;
@@ -61,3 +96,4 @@ app.use(morgan('tiny'));
 
 // launch our backend into a port
 app.listen(PORT, console.log(`LISTENING ON PORT ${PORT}`));
+
