@@ -41,5 +41,4 @@ router.get('/', (req, res) => {
     res.send('Our Quiz quizpool')
 })
 
-
 module.exports = router

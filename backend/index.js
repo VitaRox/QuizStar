@@ -28,6 +28,12 @@ router.route("/getData").get(function(req, res) {
   });
 });
 
+
+
+
+
+/* Begin Vita additions from OG './server.js' */
+
 /*
  A route to log the user in;
  'username' and 'password' params are passed in via React
@@ -59,4 +65,6 @@ router.post("/updateUser", (req, res) => {
   models.User.update(req.body.user);
   // req.body.base64Img
 });
+
+/* End Vita additions from OG './server.js' */
 

@@ -7,6 +7,7 @@ const logger = require('morgan');
 const router = express.Router();
 const Question = require('/Quizpool')
 const Data = require('./src/models/users');
+const morgan = require('morgan');
 
 // this is our MongoDB database connection string;
 const dbRoute =
@@ -19,16 +20,25 @@ const API_PORT = 3001;
 // Vita: Don't know if we will still need this;
 const PORT = process.env.PORT || 8080;
 
+// App resources for parsing, logging actions, and connecting to routes.js;
 app.use(cors());
 // bodyParser parses the request body to be a readable json format;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(logger('dev'));
+//HTTP request logger
+app.use(morgan('tiny'));
+
+
 // Vita: do we need all of these?
 // append /api for our http requests
 app.use('/api', router);
 // append /api for our http requests
 app.use('/src/routers', router);
+
+
+
+
 
 // connects our back end code with the database
 mongoose.connect(dbRoute, { useNewUrlParser: true });
