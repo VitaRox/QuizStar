@@ -39,7 +39,6 @@ app.get(`/login/:submit`, (req, res) => {
   console.log("If you're reading this, you've had a successful login submission.");
   res.status(200).send(`Welcome! You've logged in using ${username} (USERNAME) and ${password} (PASSWORD)
   .`);
-
 });
 
 // Retrieves list of quiz subjects;
