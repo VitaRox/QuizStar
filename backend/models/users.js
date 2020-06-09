@@ -1,13 +1,10 @@
 import mongoose from 'mongoose'
 
-<<<<<<< HEAD
 const Schema = mongoose.Schema;
 
 // Defines the Schema associated with a user account/data;
-let usersSchema = new Schema({
-=======
+
 const UserSchema = new mongoose.Schema({
->>>>>>> ad32d17ccb43fb6b18ca421f8ca35fffd9b33c68
   userName: {
     type: String,
     required: 'Name is required'
