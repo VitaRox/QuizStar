@@ -1,40 +1,76 @@
-const mongoose = require('mongoose');
-const User = mongoose.model('User');
+import User from '../models/users'
 
-//const QuizHistory = mongoose.model('QuizHistory');
-
-exports.signIn = (req, res) => {
-  res.redirect('/');
-};
-
-exports.getCurrentUser = (req, res) => {
-  res.send(req.user);
-};
-
-exports.logout = (req, res) => {
-  req.logout();
-  res.redirect('/');
-};
-
-// Update user profile
-exports.updateUserProfile = async (req, res) => {
-  if (!req.user) {
-    res.status(401).json({ notLoggedIn: 'You need to log in first' });
+const create = async (req, res) => {
+  const user = new User(req.body)
+  try {
+    await user.save()
+    return res.status(200).json({
+      message: "Successfully signed up!"
+    })
+  } catch (err) {
+    return res.status(400).json({
+      error: "Could not retrieve user"
+    })
   }
+}
 
-  if (req.body.username) req.user.username = req.body.username;
-  if (req.body.email) req.user.email = req.body.email;
 
-  // Save the user
-  await req.user.save();
-  res.json({ profileUpdated: 'Profile Updated!' });
-};
+/**
+ * Load user and append to req.
+ */
+const userByID = async (req, res, next, id) => {
+  try {
+    let user = await User.findById(id)
+    if (!user)
+      return res.status('400').json({
+        error: "User not found"
+      })
+    req.profile = user
+    next()
+  } catch (err) {
+    return res.status('400').json({
+      error: "Could not retrieve user"
+    })
+  }
+}
 
-// Delete user account
-exports.deleteUserAccount = async (req, res) => {
-  if (!req.user) {
-    res.status(401).json({ notLoggedIn: 'You need to log in first' });
-  };
+const read = (req, res) => {
+  req.profile.hashed_password = undefined
+  req.profile.salt = undefined
+  return res.json(req.profile)
+}
 
-  res.json({ message: 'Account deleted successfully!' });
-};S
+const list = async (req, res) => {
+  try {
+    let users = await User.find().select('name email updated created')
+    res.json(users)
+  } catch (err) {
+    return res.status(400).json({
+      error: "Could not retrieve user"
+    })
+  }
+}
+
+const update = async (req, res) => {
+  try {
+    let user = req.profile
+    user = extend(user, req.body)
+    user.updated = Date.now()
+    await user.save()
+    user.hashed_password = undefined
+    user.salt = undefined
+    res.json(user)
+  } catch (err) {
+    return res.status(400).json({
+      error: "Could not retrieve user"
+    })
+  }
+}
+
+
+export default {
+  create,
+  userByID,
+  read,
+  update
+}
