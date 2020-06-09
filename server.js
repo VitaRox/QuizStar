@@ -76,7 +76,7 @@ app.post('/quizcreate', cors(), (req, res) => {
         if(err) {return next (err)}
         res.status(201).json(result)
       });
-  }
+  });
 
 // demo endpoint
 app.post("/updateUser", (req, res) => {
