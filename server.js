@@ -20,36 +20,6 @@ mongoose.connect(MONGODB_URI,{useNewUrlParser: true,
       process.exit();
    });
 
-// Defines the model of the Schema that represents the user's data;
-let userSchema = new Schema({
-  _id: {
-    type: String
-  },
-  isActive: {
-    type: Boolean
-  },
-  picture: {
-    type:String
-  },
-  age: {
-    type: Number
-  },
-  username: {
-    type: String
-  },
-  gender: {
-    type: String
-  },
-  email: {
-    type: String
-  },
-  phone: {
-    type: String
-  },
-  registered: {
-    type: Boolean
-  }
-});
 
 
 

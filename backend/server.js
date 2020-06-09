@@ -1,17 +1,20 @@
 const mongoose = require('mongoose');
 const express = require('express');
-var cors = require('cors');
+const app = express();
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const Data = require('./models');
-
-const API_PORT = 3001;
-const app = express();
-app.use(cors());
 const router = express.Router();
 const Question = require('/Quizpool')
 
-// this is our MongoDB database
+const API_PORT = 3001;
+// Don't know if we will still need this;
+const PORT = process.env.PORT || 8080;
+
+app.use(cors());
+
+// this is our MongoDB database connection string;
 const dbRoute =
   'mongodb:////guoy:ABCz12345678@cluster0-htq4v.mongodb.net/test?authSource=admin&replicaSet=Cluster0-shard-0&readPreference=primary&appname=MongoDB%20Compass%20Community&ssl=true';
 
