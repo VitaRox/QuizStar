@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import Login from "../Login/index";
 import Profile from "../Profile/index";
 import QuizCreate from "../QuizCreate/index";
-import QuizTake from "../QuizTake/QuizView";
+import AllQuizView from "../Quizzes/QuizView";
 import Home from "../Home/index"
 import UsernameForm from '../LoginComponents/UsernameForm';
 import QuizStarHeader from '../QuizStarHeader';
@@ -49,7 +49,7 @@ const App = () => {
               <Route path="/Profile"  exact strict component={Profile} />
               <Route path="/subjects"  exact strict component={Subject} />
               <Route path="/CreateQuiz" exact strict component={QuizCreate} />
-              <Route path="/quiz" exact strict component={QuizTake} />
+              <Route path="/quiz" exact strict component={AllQuizView} />
               <Route path="/quizView" exact strict component={QuizView} />
             </div>
         </Content>

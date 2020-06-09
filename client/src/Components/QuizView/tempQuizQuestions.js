@@ -38,8 +38,8 @@ const qBank = [
   },
   {
     question:"What is 7+1?",
-    answers: ["7", "6", "8", "3"],
-    correct: "Mike",
+    answers: ["7", "6", "7", "3"],
+    correct: "8",
     questionId: "648452"
   }
 

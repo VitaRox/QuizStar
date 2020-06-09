@@ -1,8 +1,9 @@
 import React, {useState} from "react";
-
+import { Container, List } from 'semantic-ui-react';
 const QuestionBox = ({question, options, selected}) => {
   const [answer, setAnswer] = useState(options);
   return (
+    <Container>
     <div className="questionBox">
       <div className="question">{question}</div>
       {answer.map((text, index) => (
@@ -18,6 +19,7 @@ const QuestionBox = ({question, options, selected}) => {
         </button>
       ))}
     </div>
+    </Container>
   );
 };
 

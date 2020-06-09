@@ -3,7 +3,7 @@ const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
 const Subject = require('./client/src/models/Subject')
-const Quiz = require('./client/src/models/Quiz')
+const Quiz = require('./client/src/models/TempQuizSchema')
 
 const app = express();
 const PORT = process.env.PORT || 8080;
