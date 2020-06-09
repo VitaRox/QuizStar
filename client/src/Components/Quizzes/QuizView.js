@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
+import { Container, List } from 'semantic-ui-react'
 import axios from 'axios';
-
+import 'semantic-ui-css/semantic.min.css'
 export default class AllQuizView extends Component{
   state = {
       quizzes: []
@@ -21,19 +22,12 @@ componentDidMount = () => {
 render()
 {
          return (
-           <div className="main-content">
-             {this.state.quizzes.map((item)=>
-               <div>
-               <h3>{item.quizName}</h3>
-               <ul>
-               {item.questions.map((sub)=>
-                 <li>{sub.question}</li>
-               )}
-               </ul>
-               </div>
-             )
-             }
-             </div>
+        <Container>
+          <List className= "ui selection middle aligned list">
+              {this.state.quizzes.map(item => <List.Item key={item.quizName}>Creator: {item.quizCreator}
+            <List.Content><List.Header>{item.quizName}</List.Header></List.Content></List.Item>)}
+          </List>
+        </Container>
        )
      }
 }

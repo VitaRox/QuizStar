@@ -25,19 +25,18 @@ const App = () => {
             <Navigation>
              <Link to="/Login">Login</Link>
              <Link to="/Profile">Profile</Link>
-             <Link to="/subjects">Browse Quizzes</Link>
+             <Link to="/subjects">Browse Subjects</Link>
              <Link to="/CreateQuiz">Create Quiz</Link>
-             <Link to="/quiz">Take Quiz</Link>
-
+             <Link to="/quiz">Quizzes</Link>
             </Navigation>
         </Header>
         <Drawer title="QuizStar">
             <Navigation>
             <Link to="/Login">Login</Link>
              <Link to="/Profile">Profile</Link>
-             <Link to="/subjects">Browse Quizzes</Link>
+             <Link to="/subjects">Browse Subjects</Link>
              <Link to="/CreateQuiz">Create Quiz</Link>
-             <Link to="/quiz">Take Quiz</Link>
+             <Link to="/quiz">Quizzes</Link>
             </Navigation>
         </Drawer>
         <Content>
