@@ -7,11 +7,19 @@ const questionController = require('../controller/questionController');
 // Quizpool represents our db/quiz schema of quizzes;
 const Quizpool = require('../models/quizPool')
 
+
+// User data routes:
+
+// Retrieve user profile;
 router.get('/api/current_user', userController.getCurrentUser);
 // Update user profile;
 router.post('/api/profile', userController.updateUserProfile);
 // Delete user account;
 router.delete('/api/profile', userController.deleteUserAccount);
+
+
+
+// Quiz routes:
 
 // Get one quiz question;
 router.get('/quizpool/:id', (req, res) => {

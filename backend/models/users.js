@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
+// Defines the Schema associated with a user account/data;
 let usersSchema = new Schema({
   userName: {
     type: String
