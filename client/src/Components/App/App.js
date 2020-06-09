@@ -14,6 +14,7 @@ import OptionInputForm from '../QuizCreateComponents/OptionInputForm';
 import PasswordForm from '../LoginComponents/PasswordForm';
 import { Layout, Header, Navigation, Drawer, Content } from 'react-mdl';
 import Subject from "../Subject/SubjectList";
+import QuizView from "../QuizView/QuizView.js"
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
              <Link to="/subjects">Browse Subjects</Link>
              <Link to="/CreateQuiz">Create Quiz</Link>
              <Link to="/quiz">Quizzes</Link>
+             <Link to="/quizView">Take Quiz Temp</Link>
             </Navigation>
         </Header>
         <Drawer title="QuizStar">
@@ -37,17 +39,18 @@ const App = () => {
              <Link to="/subjects">Browse Subjects</Link>
              <Link to="/CreateQuiz">Create Quiz</Link>
              <Link to="/quiz">Quizzes</Link>
+             <Link to="/quizView">Take Quiz Temp</Link>
             </Navigation>
         </Drawer>
         <Content>
             <div>
-                <QuizStarHeader />
               <Route path="/" exact strict component={Home} />
               <Route path="/Login" exact strict component={Login} />
               <Route path="/Profile"  exact strict component={Profile} />
               <Route path="/subjects"  exact strict component={Subject} />
               <Route path="/CreateQuiz" exact strict component={QuizCreate} />
               <Route path="/quiz" exact strict component={QuizTake} />
+              <Route path="/quizView" exact strict component={QuizView} />
             </div>
         </Content>
     </Layout>
