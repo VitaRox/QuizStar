@@ -4,13 +4,14 @@ import UsernameForm from '../LoginComponents/UsernameForm';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import axios from 'axios';
 
+
 // This component represents the overall login form the
 // users uses to submit their credentials through;
 function Login() {
 
   // This const refers to the url of the API service we are contacting;
   // Should map to our Express server, server.js;
-  const API_URL = "https://localhost:8080/login/:submit";
+  const API_URL = `https://localhost:3001/login/:submit`;
 
   // State HOOKS;
   // Error used to handle error conditions;
@@ -26,8 +27,8 @@ function Login() {
   const [usernameInput, setUsernameInput] = useState(null);
   const [passwordInput, setPasswordInput] = useState(null);
 
-  // // This is used to display the login forms in this view if the user has
-  // // not logged in yet, i.e. if !isLoaded;
+  // This is used to display the login forms in this view
+  // if the user has not logged in yet, i.e. if !isLoaded;
   function showLoginForms() {
     if (!isLoaded) {
       return <div>
@@ -40,17 +41,24 @@ function Login() {
   // Upon change, update the window (whether or not to display login submission forms);
   useEffect(() => {
     showLoginForms();
-    setLoaded(true);
-    axios.post(`${API_URL}`)
+    if(setCredentials()) {
+      const username = setUsernameInput(UsernameForm.username);
+      const password = setPasswordInput(PasswordForm.password);
+      axios.post(`${API_URL}`, null, {
+        // axios.req.params.username,
+        username: username,
+        password: password
+      })
+        // Here, we will need to be returned a JWT upon successful credential validation;
+        // JWT will be used in a GET request to retrieve user data;
       .then(res => {
-        if(setCredentials()) {
-          setPayload(res.data);
-          console.log(payload);
-        }
+        setPayload(res.data);
+        console.log(payload);
       })
       .catch(function (error) {
         console.log(error);
       })
+    }
   });
 
   /*
@@ -65,8 +73,6 @@ function Login() {
       alert("Cannot be blank.");
       return false;
     }
-    setUsernameInput(UsernameForm.username);
-    setPasswordInput(PasswordForm.password);
     return true;
     // then call our Axios POST method inside this (or inside useEffect? I think it's actually that);
     // which then calls our Axios GET method upon successfully
