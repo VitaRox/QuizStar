@@ -24,13 +24,13 @@ module.exports = function validateRegisterInput(data) {
         errors.password = "Password is required";
     }
     if (Validator.isEmpty(data.confirmPassword)) {
-        errors.password2 = "Confirm password is required";
+        errors.confirmPassword = "Confirm password is required";
     }
     if (!Validator.isLength(data.password, { min: 6, max: 30 })) {
         errors.password = "Password must be at least 6 characters";
     }
     if (!Validator.equals(data.password, data.confirmPassword)) {
-        errors.password2 = "Passwords must match";
+        errors.confirmPassword = "Passwords must match";
     }
     return {
         errors,
