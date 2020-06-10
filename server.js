@@ -53,6 +53,19 @@ app.get('/subjects', (req, res) =>{
     });
 });
 
+//displays all quizzes in DB
+app.get('/quiz', (req, res) =>{
+
+  Quiz.find({}).sort({})
+    .then((data) =>{
+      console.log('Data Quiz: ',data);
+      res.json(data);
+    })
+    .catch((error) =>{
+      console.log('error');
+    });
+
+});
 
 //quiz route
 app.post('/quizcreate', cors(), (req, res) => {

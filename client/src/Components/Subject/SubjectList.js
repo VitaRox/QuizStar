@@ -55,9 +55,6 @@ render()
                 <div className="col-md-4">
                 <Card imgsrc={image5}title="Math"/>
                 </div>
-                <div className="col-md-4">
-                {this.displaySubjects(this.state.subjects)}
-                </div>
               </div>
             </div>
         );
