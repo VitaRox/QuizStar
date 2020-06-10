@@ -4,7 +4,6 @@ import { Container} from 'semantic-ui-react';
 import "./Profile.css";
 import axios from "axios";
 
-
 // stateless function
 // not classes  (somewhat the same)
 // could be easier to integrate states as classes
@@ -12,15 +11,11 @@ import axios from "axios";
 
 function Profile() {
   const [files, setFiles] = useState([]);
-
+  const [base64File, setBase64File] = useState("");
   const [any, setAny] = useState("a");
+  const [bio, setBio] = useState("");
   let staticConst = "";
-  const processed = (file) => {
-    console.log(file.substring(100, 200));
-    setAny("Hello");
-    console.log(any);
-    // axios.post('https://example.com/any',{img:profileImage})
-  };
+
   // useEffect(()=>processed('string'))
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*",
@@ -28,10 +23,10 @@ function Profile() {
       const reader = new FileReader();
 
       reader.onload = function () {
-        processed(reader.result);
-        axios.post("https://example", {
-          base64Img: reader.result,
-        });
+        setBase64File(reader.result);
+        /*axios.post('https://example', {
+                    base64Img: reader.result
+                })*/
       };
       reader.readAsDataURL(acceptedFiles[0]);
 
@@ -44,6 +39,14 @@ function Profile() {
       );
     },
   });
+  const updateUser = (ev) => {
+    ev.preventDefault();
+    axios.post("http://localhost:8080/updateUser", {
+      userName: "anonymous",
+      bio: bio,
+      profileImage: base64File,
+    });
+  };
 
   const images = files.map((file) => (
     <div key={file.name}>
@@ -55,14 +58,16 @@ function Profile() {
 
   return (
     <div>
-      <form className="bio">
-        <div class="form-group">
-          <label for="exampleFormControlTextarea1">bio </label>
-          <textarea
-            class="form-control"
-            id="exampleFormControlTextarea1"
-            rows="5"
-          ></textarea>
+      <form className="bio" onSubmit={updateUser}>
+        <div className="form-group">
+          <label aria-label="bio">
+            bio
+            <textarea
+              onChange={(ev) => setBio(ev.target.value)}
+              className="form-control"
+              rows="5"
+            ></textarea>
+          </label>
         </div>
         <button className="bioButton" type="submit">
           submit bio
