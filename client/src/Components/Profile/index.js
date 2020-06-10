@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
-import { Container} from 'semantic-ui-react';
 import "./Profile.css";
 import axios from "axios";
 
