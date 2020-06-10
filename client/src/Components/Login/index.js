@@ -3,6 +3,7 @@ import PasswordForm from '../LoginComponents/PasswordForm';
 import UsernameForm from '../LoginComponents/UsernameForm';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import axios from 'axios';
+import Profile from '../Profile';
 
 
 // This component represents the overall login form the
@@ -11,7 +12,7 @@ function Login() {
 
   // This const refers to the url of the API service we are contacting;
   // Should map to our Express server, server.js;
-  const API_URL = `https://localhost:3001/login/:submit`;
+  const API_URL = `https://localhost:3001/api/users`;
 
   // State HOOKS;
   // Error used to handle error conditions;
@@ -19,6 +20,7 @@ function Login() {
   // isLoaded lets the front-end know that the user is now successfully logged in;
   // If user is logged in, unnecessary to display login forms;
   const [isLoaded, setLoaded] = useState(false);
+  const [isLoggedIn, setLoggedIn] = useState(false);
 
   // 'Payload' represents the array of data that the db will return upon successful (!error) condition;
   const [payload, setPayload] = useState([]);
@@ -30,7 +32,7 @@ function Login() {
   // This is used to display the login forms in this view
   // if the user has not logged in yet, i.e. if !isLoaded;
   function showLoginForms() {
-    if (!isLoaded) {
+    if (!isLoggedIn) {
       return <div>
         <UsernameForm/>
         <PasswordForm/>
@@ -56,10 +58,10 @@ function Login() {
         console.log(payload);
       })
       .catch(function (error) {
-        console.log(error);
+        console.log("eat shit asshole");
       })
     }
-  });
+  }, [showLoginForms, API_URL, payload]);
 
   /*
    Called when submit is clicked;
@@ -74,24 +76,23 @@ function Login() {
       return false;
     }
     return true;
-    // then call our Axios POST method inside this (or inside useEffect? I think it's actually that);
-    // which then calls our Axios GET method upon successfully
-    // being sent back a payload of data from server-side;
   }
 
   return (
     <div>
       <main>
-        <h1>Use the forms below to submit yr login credentials, human.</h1>
+        {/* Below: conditionally render instruction to login or else render Profile*/}
+        <h1>{!isLoggedIn ? (<div>Use the forms below to submit yr login credentials, human.</div>)
+            : (<div>{Profile}</div>)}
+          </h1>
         <div>
-          <UsernameForm/>
-          <PasswordForm/>
+          {showLoginForms()}
         </div>
         {/*
           Button below will submit all info entered to find user account/data,
           error if not;
         */}
-        <button id="attemptLogin" type="submit" onClick={setCredentials}>Submit login credentials.</button>
+        <button id="attemptLogin" type="button" onClick={setCredentials}>Submit login credentials.</button>
       </main>
     </div>
   );
