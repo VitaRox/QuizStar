@@ -16,7 +16,7 @@ function PasswordForm() {
         <input
           value={passwordInput}
           onChange={e => setPasswordInput(e.target.value)}
-          placeholder="Please enter your password:"
+          placeholder="Enter password"
           type="password"
           name="password"
           required

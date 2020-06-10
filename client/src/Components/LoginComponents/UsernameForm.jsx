@@ -21,7 +21,7 @@ function UsernameForm() {
         <input
           value={usernameInput}
           onChange={e => setUsername(e.target.value)}
-          placeholder="Please enter your username:"
+          placeholder="Enter username"
           type="text"
           name="username"
           required

@@ -36,7 +36,6 @@ router.get('/quizpool/:id', (req, res) => {
     } catch (error) {
         return res.status(500).json({"error":error})
     }
-
 })
 
 // Create one quiz question to our db;

@@ -1,9 +1,10 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import PasswordForm from '../LoginComponents/PasswordForm';
 import UsernameForm from '../LoginComponents/UsernameForm';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import axios from 'axios';
 import Profile from '../Profile';
+import userController from 'backend/controller/userController.js';
 
 
 // This component represents the overall login form the
@@ -12,7 +13,7 @@ function Login() {
 
   // This const refers to the url of the API service we are contacting;
   // Should map to our Express server, server.js;
-  const API_URL = `https://localhost:3001/api/users`;
+  const API_URL = `https://localhost:3001/api/Users/:username/:password`;
 
   // State HOOKS;
   // Error used to handle error conditions;
@@ -29,20 +30,8 @@ function Login() {
   const [usernameInput, setUsernameInput] = useState(null);
   const [passwordInput, setPasswordInput] = useState(null);
 
-  // This is used to display the login forms in this view
-  // if the user has not logged in yet, i.e. if !isLoaded;
-  function showLoginForms() {
-    if (!isLoggedIn) {
-      return <div>
-        <UsernameForm/>
-        <PasswordForm/>
-      </div>
-    }
-  };
-
   // Upon change, update the window (whether or not to display login submission forms);
   useEffect(() => {
-    showLoginForms();
     if(setCredentials()) {
       const username = setUsernameInput(UsernameForm.username);
       const password = setPasswordInput(PasswordForm.password);
@@ -51,17 +40,19 @@ function Login() {
         username: username,
         password: password
       })
+        axios.get(`${API_URL}`, userController.read)
         // Here, we will need to be returned a JWT upon successful credential validation;
         // JWT will be used in a GET request to retrieve user data;
       .then(res => {
-        setPayload(res.data);
-        console.log(payload);
+        console.log(res.status());
+        console.log(res.data);
+        console.log("Great success!");
       })
       .catch(function (error) {
-        console.log("eat shit asshole");
+        console.log("danger, Will Robinson, DANGER");
       })
     }
-  }, [showLoginForms, API_URL, payload]);
+  }, [API_URL, payload]);
 
   /*
    Called when submit is clicked;
@@ -82,12 +73,15 @@ function Login() {
     <div>
       <main>
         {/* Below: conditionally render instruction to login or else render Profile*/}
-        <h1>{!isLoggedIn ? (<div>Use the forms below to submit yr login credentials, human.</div>)
-            : (<div>{Profile}</div>)}
-          </h1>
-        <div>
-          {showLoginForms()}
-        </div>
+        {!isLoggedIn ?
+          (<div>Use the forms below to submit yr login credentials, human.<br/>
+             <UsernameForm/><br/>
+             <PasswordForm/><br/>
+          </div>)
+          : (<div>
+            {Profile}
+          </div>)}
+
         {/*
           Button below will submit all info entered to find user account/data,
           error if not;

@@ -4,9 +4,10 @@ const LocalStrategy = require('passport-local');
 
 const Users = mongoose.model('Users');
 
+// Vita: Does this need to be 'Users' instead of 'user'?
 passport.use(new LocalStrategy({
-  usernameField: 'user[username]',
-  passwordField: 'user[password]',
+  usernameField: 'Users[username]',
+  passwordField: 'Users[password]',
 }, (username, password, done) => {
   Users.findOne({ username })
     .then((user) => {
