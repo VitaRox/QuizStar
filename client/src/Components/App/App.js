@@ -33,10 +33,6 @@ const App = () => {
             <Navigation>
              <Link to="/Login">Login</Link>
              <Link to="/Profile">Profile</Link>
-             <Link to="/CreateQuiz">Create Quiz</Link>
-             <Link to="/TakeQuiz">Take Quiz</Link>
-             <Link to="/Login">Login</Link>
-             <Link to="/Profile">Profile</Link>
              <Link to="/subjects">Browse Subjects</Link>
              <Link to="/CreateQuiz">Create Quiz</Link>
              <Link to="/quiz">Quizzes</Link>
