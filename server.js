@@ -77,7 +77,8 @@ app.get('/quiz', (req, res) =>{
     });
 
 });
-//displays one quiz (working) ugh
+
+//displays one quiz by id
 app.get('/quiz/:id', async (req, res) => {
   var quizID = await Quiz.findOne({_id: req.params.id})
   res.json(quizID)
