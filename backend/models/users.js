@@ -1,10 +1,10 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 
 // Defines the Schema associated with a user account/data;
 
-const UserSchema = new mongoose.Schema({
+const UserSchema = new Schema({
   userName: {
     type: String,
     required: 'Name is required'
@@ -55,4 +55,4 @@ const UserSchema = new mongoose.Schema({
 });
 
 
-module.exports = mongoose.model("User", UserSchema);
+module.exports = UserSchema;

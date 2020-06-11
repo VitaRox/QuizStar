@@ -3,7 +3,6 @@ const express = require('express');
 var cors = require('cors');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
-const Data = require('./src/models/users');
 
 const API_PORT = 3001;
 const app = express();
@@ -16,10 +15,9 @@ const dbRoute =
   'mongodb+srv://quizstar:quizstar1@mongodbqs-sdfsq.mongodb.net/test?retryWrites=true&w=majority';
 
 // connects our back end code with the database
-mongoose.connect(dbRoute, { useNewUrlParser: true });
+mongoose.connect(dbRoute, { useNewUrlParser: true, useUnifiedTopology:true });
 
 let db = mongoose.connection;
-
 db.once('open', () => console.log('connected to the database'));
 
 // checks if connection with the database is successful

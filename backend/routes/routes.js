@@ -11,7 +11,7 @@ const Quizpool = require('../models/quizPool')
 // User data routes:
 
 // Retrieve user profile;
-router.get('/api/current_user', userController.getCurrentUser);
+router.get('/api/users', userController.read(req, res));
 // Update user profile;
 router.post('/api/profile', userController.updateUserProfile);
 // Delete user account;

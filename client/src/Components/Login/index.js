@@ -4,16 +4,12 @@ import UsernameForm from '../LoginComponents/UsernameForm';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import axios from 'axios';
 import Profile from '../Profile';
-import userController from 'backend/controller/userController.js';
 
 
 // This component represents the overall login form the
 // users uses to submit their credentials through;
 function Login() {
 
-  // This const refers to the url of the API service we are contacting;
-  // Should map to our Express server, server.js;
-  const API_URL = `https://localhost:3001/api/Users/:username/:password`;
 
   // State HOOKS;
   // Error used to handle error conditions;
@@ -27,32 +23,42 @@ function Login() {
   const [payload, setPayload] = useState([]);
   // The following 2 Hooks are used to track the state of the username/password fields,
   // i.e. whether they have been filled in
-  const [usernameInput, setUsernameInput] = useState(null);
-  const [passwordInput, setPasswordInput] = useState(null);
+  const [username, setUsername] = useState(null);
+  const [password, setPassword] = useState(null);
 
   // Upon change, update the window (whether or not to display login submission forms);
   useEffect(() => {
     if(setCredentials()) {
-      const username = setUsernameInput(UsernameForm.username);
-      const password = setPasswordInput(PasswordForm.password);
-      axios.post(`${API_URL}`, null, {
-        // axios.req.params.username,
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      // Here, the values passed by our low-level React components,
+      // username and password, are set to the values of this.username
+      // and this.password using useState();
+      const username = setUsername(UsernameForm.username);
+      const password = setPassword(PasswordForm.password);
+      // These values are then interpolated into our URL string;
+      axios.post(`https://localhost:3001/api/users/:${username}/:${password}`, null, {
+        // Here we assign username and password to the related req.params;
         username: username,
         password: password
       })
-        axios.get(`${API_URL}`, userController.read)
-        // Here, we will need to be returned a JWT upon successful credential validation;
-        // JWT will be used in a GET request to retrieve user data;
-      .then(res => {
-        console.log(res.status());
-        console.log(res.data);
-        console.log("Great success!");
-      })
-      .catch(function (error) {
-        console.log("danger, Will Robinson, DANGER");
-      })
+        .then(console.log(`User has passed \n${username} and \n${password} to the server-side.`))
+        // Here, the res object returned by POST (above) should contain JWT upon
+        // successful validation of credentials and pass this along with our GET;
+        .then(res => {
+          axios.get(`https://localhost:3001/api/users/`)
+            // Here, we will need to be returned a JWT upon successful credential validation;
+            // JWT will be used in a GET request to retrieve user data;
+            .then(res => {
+              console.log(res.status());
+              console.log(res.data);
+              console.log("Great success!");
+            })
+            .catch(function (error) {
+              console.log("danger, Will Robinson, DANGER");
+            })
+        })
     }
-  }, [API_URL, payload]);
+  }, [username, password]);
 
   /*
    Called when submit is clicked;
@@ -68,6 +74,13 @@ function Login() {
     }
     return true;
   }
+
+  function handleChange() {
+    setUsername(UsernameForm.username);
+    setPassword(PasswordForm.password);
+    return setCredentials();
+  }
+
 
   return (
     <div>
@@ -86,7 +99,7 @@ function Login() {
           Button below will submit all info entered to find user account/data,
           error if not;
         */}
-        <button id="attemptLogin" type="button" onClick={setCredentials}>Submit login credentials.</button>
+        <button id="attemptLogin" type="button" onClick={handleChange}>Submit login credentials.</button>
       </main>
     </div>
   );
