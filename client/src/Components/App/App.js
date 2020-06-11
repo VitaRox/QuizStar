@@ -5,12 +5,13 @@ import Login from "../Login/index";
 import Profile from "../Profile/index";
 import QuizCreate from "../QuizCreate/index";
 import AllQuizView from "../Quizzes/Quizzes";
-import QuizView from "../QuizView/QuizView.js"
-import Home from "../Home/index"
+import QuizView from "../QuizView/QuizView.js";
+import Quiz from "../QuizViewNew/Quiz.js";
+import Home from "../Home/index";
 import QuizStarHeader from '../QuizStarHeader';
 import { Layout, Header, Navigation, Drawer, Content } from 'react-mdl';
 import Subject from "../Subject/SubjectList";
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
   return (
@@ -49,6 +50,7 @@ const App = () => {
               <Route path="/CreateQuiz" exact strict component={QuizCreate} />
               <Route path="/quiz" exact strict component={AllQuizView} />
               <Route path="/quizView" exact strict component={QuizView} />
+              <Route path="/quiz/:id" exact strict component={Quiz}/>
             </div>
         </Content>
     </Layout>
