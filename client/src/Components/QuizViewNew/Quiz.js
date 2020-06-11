@@ -18,22 +18,19 @@ componentDidMount = () => {
       });
 }
 
+displayQuiz = (quiz) => {
+  if(!quiz.length) return null;
+  return quiz.map((quiz, index) =>(
+    <div key ={index}>
+      <h4 className="quiz">{quiz}</h4>
+    </div>
+  ));
+};
 
 render()
 {
          return (
            <div className="main-content">
-             {this.state.quizzes.map((item)=>
-               <div>
-               <h3>{item.quizName}</h3>
-               <ul>
-               {item.questions.map((sub)=>
-                 <li>{sub.question}</li>
-               )}
-               </ul>
-               </div>
-             )
-             }
              </div>
        )
      }

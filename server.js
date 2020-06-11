@@ -12,7 +12,6 @@ const PORT = process.env.PORT || 8080;
 
 const MONGODB_URI =
   "mongodb+srv://quizstar:quizstar1@mongodbqs-sdfsq.mongodb.net/test?retryWrites=true&w=majority";
-//'mongodb+srv://quizstar:quizstar1@mongodbqs-sdfsq.mongodb.net/test?retryWrites=true&w=majority'
 
 mongoose
   .connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -80,9 +79,9 @@ app.get('/quiz', (req, res) =>{
 
 //displays one quiz by id
 app.get('/quiz/:id', async (req, res) => {
-  var quizID = await Quiz.findOne({_id: req.params.id})
+  var quizID = await Quiz.findOne(req.params._id)
   res.json(quizID)
-  console.log(quizID);
+  console.log("quiz log "+ quizID);
 })
 
 
