@@ -74,6 +74,7 @@ function Login() {
     }
     return true;
   }
+  let credentialsProcessing = false;
 
   return (
     <div>
