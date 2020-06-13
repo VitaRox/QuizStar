@@ -75,13 +75,6 @@ function Login() {
     return true;
   }
 
-  function handleChange() {
-    setUsername(UsernameForm.username);
-    setPassword(PasswordForm.password);
-    return setCredentials();
-  }
-
-
   return (
     <div>
       <main>
