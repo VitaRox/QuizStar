@@ -23,18 +23,10 @@
   "homepage": "https://github.com/VitaRox/QuizStar#readme",
   "dependencies": {
     "@popperjs/core": "^2.4.1",
-    "axios": "^0.19.2",
-    "classnames": "^2.2.6",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "jquery": "^3.5.1",
-    "jwt-decode": "^2.2.0",
-    "mongoose": "^5.9.18",
-    "react": "^16.13.1",
-    "react-redux": "^7.2.0",
-    "react-router-dom": "^5.2.0",
-    "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "mongoose": "^5.9.18"
   },
   "devDependencies": {
     "morgan": "^1.10.0"

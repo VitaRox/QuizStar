@@ -28,7 +28,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(logger('dev'));
 
-
 // append /api for our http requests
 app.use('/src/routers', router);
 
