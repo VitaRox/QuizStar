@@ -4,7 +4,7 @@ import UsernameForm from '../LoginComponents/UsernameForm';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import axios from 'axios';
 import Profile from '../Profile';
-
+import jwtDecode from 'jwt-decode';
 
 // This component represents the overall login form the
 // users uses to submit their credentials through;
@@ -18,9 +18,9 @@ function Login() {
   // If user is logged in, unnecessary to display login forms;
   const [isLoaded, setLoaded] = useState(false);
   const [isLoggedIn, setLoggedIn] = useState(false);
+  // credentialsProcessing tracks whether credentials have been submitted;
+  const [credentialsProcessing, setCredentialsProcessing] = useState(false);
 
-  // 'Payload' represents the array of data that the db will return upon successful (!error) condition;
-  const [payload, setPayload] = useState([]);
   // The following 2 Hooks are used to track the state of the username/password fields,
   // i.e. whether they have been filled in
   const [username, setUsername] = useState(null);
@@ -28,15 +28,24 @@ function Login() {
 
   // Upon change, update the window (whether or not to display login submission forms);
   useEffect(() => {
-    if(setCredentials()) {
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      // Here, the values passed by our low-level React components,
-      // username and password, are set to the values of this.username
-      // and this.password using useState();
+    // Saves user token to localStorage upon successful validation;
+    function setToken(idToken) {
+      localStorage.setItem('id_token', idToken)
+    }
+
+    // Uses jwt-decode npm package to decode the token;
+    function getProfile() {
+      return jwtDecode(localStorage.getItem('id_token')) // assuming you have jwt token then use jwt-decode library
+    }
+    // If: the user hasn't passed in blank fields or other garbage...
+    if(credentialsProcessing) {
+      // Here, we set our params username and password =
+      // corresponding values returned from our low-level
+      // React components;
       const username = setUsername(UsernameForm.username);
       const password = setPassword(PasswordForm.password);
-      // These values are then interpolated into our URL string;
-      axios.post(`https://localhost:3001/api/users/:${username}/:${password}`, null, {
+      // These values are then passed to the path for server-side login validation;
+      axios.post(`/api/users/`, null, {
         // Here we assign username and password to the related req.params;
         username: username,
         password: password
@@ -45,17 +54,12 @@ function Login() {
         // Here, the res object returned by POST (above) should contain JWT upon
         // successful validation of credentials and pass this along with our GET;
         .then(res => {
-          axios.get(`https://localhost:3001/api/users/`)
-            // Here, we will need to be returned a JWT upon successful credential validation;
-            // JWT will be used in a GET request to retrieve user data;
-            .then(res => {
-              console.log(res.status());
-              console.log(res.data);
-              console.log("Great success!");
-            })
-            .catch(function (error) {
-              console.log("danger, Will Robinson, DANGER");
-            })
+          if(res.type == 'success'){
+            this.setToken(res.token) // Setting the token in localStorage
+            return Promise.resolve(res);
+          } else {
+            return Promise.reject(res)
+          }
         })
     }
   }, [username, password]);
@@ -63,18 +67,15 @@ function Login() {
   /*
    Called when submit is clicked;
    Checks whether user is attempting to pass blank forms;
-   If not, calls State methods to setState of appropriate props
-   = the props exported by the appropriate React components;
-   Returns true if successful;
+   Sets credsProcessing to true if successful;
   */
   function setCredentials() {
     while (UsernameForm.username != null || PasswordForm.password != null) {
       alert("Cannot be blank.");
-      return false;
+      setCredentialsProcessing(false);
     }
-    return true;
+    setCredentialsProcessing(true);
   }
-  let credentialsProcessing = false;
 
   return (
     <div>
@@ -93,7 +94,7 @@ function Login() {
           Button below will submit all info entered to find user account/data,
           error if not;
         */}
-        <button id="attemptLogin" type="button" onClick={handleChange}>Submit login credentials.</button>
+        <button id="attemptLogin" type="submit" onClick={setCredentials}>Submit login credentials.</button>
       </main>
     </div>
   );
