@@ -26,43 +26,7 @@ function Login() {
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
 
-  // Upon change, update the window (whether or not to display login submission forms);
-  useEffect(() => {
-    // Saves user token to localStorage upon successful validation;
-    function setToken(idToken) {
-      localStorage.setItem('id_token', idToken)
-    }
-
-    // Uses jwt-decode npm package to decode the token;
-    function getProfile() {
-      return jwtDecode(localStorage.getItem('id_token')) // assuming you have jwt token then use jwt-decode library
-    }
-    // If: the user hasn't passed in blank fields or other garbage...
-    if(credentialsProcessing) {
-      // Here, we set our params username and password =
-      // corresponding values returned from our low-level
-      // React components;
-      const username = setUsername(UsernameForm.username);
-      const password = setPassword(PasswordForm.password);
-      // These values are then passed to the path for server-side login validation;
-      axios.post(`/api/users/`, null, {
-        // Here we assign username and password to the related req.params;
-        username: username,
-        password: password
-      })
-        .then(console.log(`User has passed \n${username} and \n${password} to the server-side.`))
-        // Here, the res object returned by POST (above) should contain JWT upon
-        // successful validation of credentials and pass this along with our GET;
-        .then(res => {
-          if(res.type == 'success'){
-            this.setToken(res.token) // Setting the token in localStorage
-            return Promise.resolve(res);
-          } else {
-            return Promise.reject(res)
-          }
-        })
-    }
-  }, [username, password]);
+  let userData = {};
 
   /*
    Called when submit is clicked;
@@ -77,14 +41,59 @@ function Login() {
     setCredentialsProcessing(true);
   }
 
+  // A handler function for when the login creds are submitted via onClick;
+  function onSubmit(e) {
+    // Prevents re-rendering default;
+    e.preventDefault();
+    console.log(userData);
+  };
+
+  // Upon change, update the window (whether or not to display login submission forms);
+  useEffect(() => {
+    // Saves user token to localStorage upon successful validation;
+    function setToken(idToken) {
+      localStorage.setItem('id_token', idToken)
+    }
+
+    // Uses jwt-decode npm package to decode the token;
+    function getProfile() {
+      // assuming you have jwt token then use jwt-decode library
+      return jwtDecode(localStorage.getItem('id_token'))
+    }
+
+    if (credentialsProcessing) {
+      // Here, we set our params username and password =
+      // corresponding values returned from our low-level
+      // React components;
+      const username = setUsername(UsernameForm.username);
+      const password = setPassword(PasswordForm.password);
+      // These values are then passed to the path for server-side login validation;
+      axios.post(`/api/users/`, null, {
+        "username": username,
+        "password": password
+      })
+        // Here, the res object returned by POST (above) should contain JWT upon
+        // successful validation of credentials and pass this along with our GET;
+        .then(res => {
+          if (res.type === 'success') {
+            setToken(res.token) // Store the token in localStorage
+            return Promise.resolve(res);
+          } else {
+            return Promise.reject(res)
+          }
+        })
+    }
+  }, [username, password]);
+
+
   return (
     <div>
       <main>
         {/* Below: conditionally render instruction to login or else render Profile*/}
         {!isLoggedIn ?
           (<div>Use the forms below to submit yr login credentials, human.<br/>
-             <UsernameForm/><br/>
-             <PasswordForm/><br/>
+            <UsernameForm/><br/>
+            <PasswordForm/><br/>
           </div>)
           : (<div>
             {Profile}
@@ -98,6 +107,5 @@ function Login() {
       </main>
     </div>
   );
-
 }
 export default Login;
