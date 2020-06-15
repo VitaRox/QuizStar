@@ -1,5 +1,4 @@
-import bcrypt from 'bcryptjs';
-
+const bcrypt = require('bcryptjs');
 const JwtStrategy = require("passport-jwt").Strategy;
 const localStrategy = require('passport-local').Strategy;
 const ExtractJwt = require("passport-jwt").ExtractJwt;
@@ -44,8 +43,8 @@ module.exports = passport => {
   );
 
   const opts = {
-    jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken(),
-    secretOrKey = keys.secretOrKey,
+    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+    secretOrKey: keys.secretOrKey,
   };
 
   passport.use(

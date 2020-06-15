@@ -28,8 +28,7 @@
     "concurrently": "^5.2.0"
   },
   "scripts": {
-    "start": "concurrently \"npm run client\" \"npm run server\"",
-    "client": "npm start-client.js",
+    "start": "./client/node_modules/.bin/react-scripts start",
     "server": "cd backend && node server.js",
     "build": "client/node_modules/.bin/react-scripts build",
     "test": "client/node_modules/.bin/react-scripts test",
