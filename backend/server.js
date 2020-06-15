@@ -5,9 +5,9 @@ const passport = require("passport");
 const users = require("./routes/api/users");
 const morgan = require("morgan");
 const path = require("path");
-const Subject = require("./backend/models/Subject");
-const Quiz = require("./backend/models/Quiz");
-var cors = require("cors");
+const Subject = require("./models/Subject");
+const Quiz = require("./models/Quiz");
+var cors = require(`cors`);
 
 
 const User = require("./models/userModel");
