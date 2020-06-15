@@ -45,7 +45,6 @@ function Login() {
   function onSubmit(e) {
     // Prevents re-rendering default;
     e.preventDefault();
-    console.log(userData);
   };
 
   // Upon change, update the window (whether or not to display login submission forms);
@@ -83,7 +82,7 @@ function Login() {
           }
         })
     }
-  }, [username, password]);
+  }, [username, password, credentialsProcessing]);  // Memoization allows only one element to be updated on re-render if appropriate;
 
 
   return (
