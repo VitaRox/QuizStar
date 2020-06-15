@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import { Container, List } from 'semantic-ui-react';
-const QuestionBox = ({question, options, selected}) => {
-  const [answer, setAnswer] = useState(options);
+const QuestionBox = ({question, answer, selected}) => {
   return (
     <Container>
     <div className="questionBox">
@@ -10,10 +9,6 @@ const QuestionBox = ({question, options, selected}) => {
         <button
           key={index}
           className="answerBtn"
-          onClick={() => {
-            setAnswer([text]);
-            selected(text);
-          }}
         >
           {text}
         </button>

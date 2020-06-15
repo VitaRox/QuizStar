@@ -11,7 +11,7 @@ componentDidMount = () => {
 }
 
 getQuestions = () =>{
-  var id = this.props.match.params._id
+  var id = this.props.match.params.id
   axios.get('/quiz/${id}')
     .then((response)=> {
       const data = response.data;
@@ -29,7 +29,7 @@ render()
            <div>
            {this.state.quiz.map((item)=>
                <div>
-               <h3>{item.quizName}</h3>
+               <h3>{item.questions}</h3>
                <ul>
                {item.answers.map((sub)=>
                  <li>{sub.question}</li>
