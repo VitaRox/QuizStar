@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import { Container} from 'semantic-ui-react'
 
 export default class Quiz extends Component{
-  state = {
-      quiz: []
-  };
+constructor (props){
+  super(props);
+  this.state = {quiz:{ }}
+}
 
 componentDidMount = () => {
   this.getQuestions();
@@ -12,32 +14,26 @@ componentDidMount = () => {
 
 getQuestions = () =>{
   var id = this.props.match.params.id
-  axios.get('/quiz/${id}')
-    .then((response)=> {
-      const data = response.data;
-      this.setState({quizzes:data});
+  axios.get(`/quiz/${id}`)
+    .then(({data: quiz})=> {
+      this.setState({quiz});
       })
     .catch((err) =>{
         console.log(err.message);
       });
- };
+ }
 
 
-render()
-{
-         return (
-           <div>
-           {this.state.quiz.map((item)=>
-               <div>
-               <h3>{item.questions}</h3>
-               <ul>
-               {item.answers.map((sub)=>
-                 <li>{sub.question}</li>
-               )}
-               </ul>
-               </div>
-             )}
-          </div>
+render(){
+const { quiz } = this.state;
+
+           return (
+             <Container>
+           <div>{quiz.quizName}
+           <div>{quiz.questions}</div>
+           </div>
+           </Container>
+
        )
      }
 }
