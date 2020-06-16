@@ -5,10 +5,22 @@ const path = require("path");
 const Subject = require("./client/src/models/Subject");
 const Quiz = require("./client/src/models/Quiz");
 var cors = require("cors");
+const bodyParser = require("body-parser");
+const passport = require("passport");
+const users = require("./backend/routes/api/users");
 const User = require("./models/userModel");
 const app = express();
 app.use(cors());
 const PORT = process.env.PORT || 8080;
+
+// Bodyparser middleware
+app.use(
+  bodyParser.urlencoded({
+    extended: false
+  })
+);
+app.use(bodyParser.json());
+
 
 const MONGODB_URI =
   "mongodb+srv://quizstar:quizstar1@mongodbqs-sdfsq.mongodb.net/test?retryWrites=true&w=majority";
@@ -26,6 +38,13 @@ mongoose
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// Passport middleware
+app.use(passport.initialize());
+// Passport config
+require("./backend/config/passport")(passport);
+// Routes
+app.use("/api/users", users);
+
 
 //displays in terminal
 app.use(logger);
@@ -33,6 +52,42 @@ function logger(req,res, next){
   console.log('Log')
   next()
 }
+
+// Register a user;
+app.post("/register", (req, res) => {
+  const { errors, isValid } = validateRegisterInput(req.body);
+  if (!isValid) {
+      return res.status(400).json(errors);
+  }
+  User.findOne({ email: req.body.email }).then(user => {
+      if (user) {
+          return res.status(400).json({ email: "Email already exists" });
+      } 
+      else {
+          const newUser = new User({
+              name: req.body.name,
+              email: req.body.email,
+              password: req.body.password
+      });
+
+      bcrypt.genSalt(10, (err, salt) => {
+          bcrypt.hash(newUser.password, salt, (err, hash) => {
+              if (err) throw err;
+              newUser.password = hash;
+              newUser
+                  .save()
+                  .then(user => res.json(user))
+                  .catch(err => console.log(err));
+              });
+          });
+      }
+      console.log(
+        "You are registered!"
+      );
+  });
+});
+
+
 
 /*
  A route to log the user in;
