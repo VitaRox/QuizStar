@@ -3,7 +3,7 @@ import PasswordForm from "../LoginComponents/PasswordForm";
 import UsernameForm from "../LoginComponents/UsernameForm";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./login.css";
-import logo from "./logo.jpg";
+import logo from "./quizstar.png";
 
 // This component represents the overall login form the
 // users uses to submit their credentials through;
