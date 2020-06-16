@@ -1,12 +1,13 @@
-import React, {useState, useEffect} from 'react';
-import PasswordForm from '../LoginComponents/PasswordForm';
-import UsernameForm from '../LoginComponents/UsernameForm';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import PasswordForm from "../LoginComponents/PasswordForm";
+import UsernameForm from "../LoginComponents/UsernameForm";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "./login.css";
+import logo from "./logo.jpg";
 
 // This component represents the overall login form the
 // users uses to submit their credentials through;
 function Login() {
-
   // State HOOKS;
   // Error used to handle error conditions;
   const [error, setError] = useState(false);
@@ -40,39 +41,36 @@ function Login() {
   // to fetch said data from MongoDB;
   useEffect(() => {
     const response = fetch(apiURL, {
-      method: 'POST', // *GET, POST, PUT, DELETE, etc.
-      mode: 'cors', // no-cors, *cors, same-origin
-      headers: new Headers ({
-        'Content-Type': 'application/x-www-form-urlencoded'
+      method: "POST", // *GET, POST, PUT, DELETE, etc.
+      mode: "cors", // no-cors, *cors, same-origin
+      headers: new Headers({
+        "Content-Type": "application/x-www-form-urlencoded",
       }),
-      redirect: 'follow', // manual, *follow, error
-      referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-      body: JSON.stringify(username, password) // body data type must match "Content-Type" header
-    })
-    .then((response) => response.json()); // parses JSON response into native JavaScript objects
+      redirect: "follow", // manual, *follow, error
+      referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+      body: JSON.stringify(username, password), // body data type must match "Content-Type" header
+    }).then((response) => response.json()); // parses JSON response into native JavaScript objects
   });
 
   // This method retrieves server response with the provided token;
   function requestUserInfo(token) {
     return fetch(`${apiURL}/signin`, {
-      method: 'GET',
+      method: "GET",
       headers: new Headers({
         Authorization: `Bearer ${token}`,
-      })
-    })
-      .then((response) => response.json());
-
-
-
+      }),
+    }).then((response) => response.json());
   }
   // This is used to display the login forms in this view if the user has
   // not logged in yet, i.e. if !isLoaded;
   const login = () => {
-    if(!isLoaded) {
-      return <div>
-        <UsernameForm />
-        <PasswordForm />
-      </div>
+    if (!isLoaded) {
+      return (
+        <div>
+          <UsernameForm />
+          <PasswordForm />
+        </div>
+      );
     }
   };
 
@@ -81,7 +79,6 @@ function Login() {
   // of related account info, if successful;
   // Updates all related state Hooks;
   const handleClick = () => {
-
     // Update loginCreds state array with user input;
     // The individual components handle onSubmit/values entered,
     // so no need for it here;
@@ -92,20 +89,24 @@ function Login() {
     login();
   };
 
-  return(
-      <div>
-          <main>
-              <h1>Use the forms below to submit yr login credentials, human.</h1>
-                  {/*{window.onchange=login()}*/}
+  return (
+    <div>
+      <p class="aligncenter">
+        <img src={logo} alt="Logo" className="theLogo" />
+      </p>
+      <main>
+        {/*{window.onchange=login()}*/}
 
-                  {/*
+        {/*
                     Button below will submit all info entered to find user account/data,
                     error if not;
                     */}
-                  <button id="submitLoginCreds" type="submit" onClick={handleClick}>Submit login credentials.</button>
-          </main>
-      </div>
-      );
-};
+        <button id="submitLoginCreds" type="submit" onClick={handleClick}>
+          Submit login credentials.
+        </button>
+      </main>
+    </div>
+  );
+}
 
 export default Login;
