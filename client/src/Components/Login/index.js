@@ -42,7 +42,7 @@ function Login() {
   }
 
   // A handler function for when the login creds are submitted via onClick;
-  function onSubmit(e) {
+  const onSubmit = (e) => {
     // Prevents re-rendering default;
     e.preventDefault();
   };
@@ -67,7 +67,7 @@ function Login() {
       const username = setUsername(UsernameForm.username);
       const password = setPassword(PasswordForm.password);
       // These values are then passed to the path for server-side login validation;
-      axios.post(`/api/users/`, null, {
+      axios.post(`/api/users/login`, null, {
         "username": username,
         "password": password
       })
@@ -102,7 +102,7 @@ function Login() {
           Button below will submit all info entered to find user account/data,
           error if not;
         */}
-        <button id="attemptLogin" type="submit" onClick={setCredentials}>Submit login credentials.</button>
+        <button id="attemptLogin" type="button" onClick={setCredentials} >Submit login credentials.</button>
       </main>
     </div>
   );
