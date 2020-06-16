@@ -6,10 +6,12 @@ import Profile from "../Profile/index";
 import QuizCreate from "../QuizCreate/index";
 import AllQuizView from "../Quizzes/Quizzes";
 import QuizView from "../QuizView/QuizView.js";
-import QuizStarHeader from "../QuizStarHeader";
-import { Layout, Header, Navigation, Drawer, Content } from "react-mdl";
+import Quiz from "../QuizViewNew/Quiz.js";
+import QuizStarHeader from '../QuizStarHeader';
+import { Layout, Header, Navigation, Drawer, Content } from 'react-mdl';
 import Subject from "../Subject/SubjectList";
-import "bootstrap/dist/css/bootstrap.min.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const App = () => {
   return (
@@ -23,17 +25,18 @@ const App = () => {
               <Link to="/subjects">Browse Subjects</Link>
               <Link to="/CreateQuiz">Create Quiz</Link>
               <Link to="/quiz">Quizzes</Link>
-              <Link to="/quizView">Take Quiz Temp</Link>
+              <Link to="/quizView">Take Quiz</Link>
             </Navigation>
           </Header>
           <Drawer title="QuizStar">
             <Navigation>
-              <Link to="/Login">Login</Link>
-              <Link to="/Profile">Profile</Link>
-              <Link to="/subjects">Browse Subjects</Link>
-              <Link to="/CreateQuiz">Create Quiz</Link>
-              <Link to="/quiz">Quizzes</Link>
-              <Link to="/quizView">Take Quiz Temp</Link>
+             <Link to="/Login">Login</Link>
+             <Link to="/Profile">Profile</Link>
+             <Link to="/subjects">Browse Subjects</Link>
+             <Link to="/CreateQuiz">Create Quiz</Link>
+             <Link to="/quiz">Quizzes</Link>
+             <Link to="/quizView">Take Quiz</Link>
+
             </Navigation>
           </Drawer>
           <Content>
@@ -45,6 +48,7 @@ const App = () => {
               <Route path="/CreateQuiz" exact strict component={QuizCreate} />
               <Route path="/quiz" exact strict component={AllQuizView} />
               <Route path="/quizView" exact strict component={QuizView} />
+              <Route path="/quiz/:id" exact strict component={Quiz}/>
             </div>
           </Content>
         </Layout>

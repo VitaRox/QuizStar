@@ -4,19 +4,14 @@ const morgan = require("morgan");
 const path = require("path");
 const Subject = require("./client/src/models/Subject");
 const Quiz = require("./client/src/models/Quiz");
-//const Question = require('./client/src/models/Question')
-//const Answer = require('./client/src/models/Answer')
 var cors = require("cors");
-
 const User = require("./models/userModel");
-
 const app = express();
 app.use(cors());
 const PORT = process.env.PORT || 8080;
 
 const MONGODB_URI =
   "mongodb+srv://quizstar:quizstar1@mongodbqs-sdfsq.mongodb.net/test?retryWrites=true&w=majority";
-//'mongodb+srv://quizstar:quizstar1@mongodbqs-sdfsq.mongodb.net/test?retryWrites=true&w=majority'
 
 mongoose
   .connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -30,6 +25,14 @@ mongoose
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+
+//displays in terminal
+app.use(logger);
+function logger(req,res, next){
+  console.log('Log')
+  next()
+}
 
 /*
  A route to log the user in;
@@ -73,6 +76,14 @@ app.get('/quiz', (req, res) =>{
     });
 
 });
+
+//displays one quiz by id
+app.get('/quiz/:id', async (req, res) => {
+  var data = await Quiz.findOne(req.params._id)
+  res.json(data)
+  console.log("quiz log "+ data);
+})
+
 
 //quiz route
 app.post("/quizcreate", cors(), (req, res) => {
