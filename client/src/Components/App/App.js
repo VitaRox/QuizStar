@@ -7,7 +7,6 @@ import QuizCreate from "../QuizCreate/index";
 import AllQuizView from "../Quizzes/Quizzes";
 import QuizView from "../QuizView/QuizView.js";
 import Quiz from "../QuizViewNew/Quiz.js";
-import QuizStarHeader from '../QuizStarHeader';
 import { Layout, Header, Navigation, Drawer, Content } from 'react-mdl';
 import Subject from "../Subject/SubjectList";
 import 'bootstrap/dist/css/bootstrap.min.css';

@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Container, List } from 'semantic-ui-react';
+import { Container} from 'semantic-ui-react';
 const QuestionBox = ({question, options, selected}) => {
   const [answer, setAnswer] = useState(options);
   return (

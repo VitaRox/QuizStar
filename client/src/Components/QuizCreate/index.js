@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import { Container } from 'semantic-ui-react'
 import Question from "../QuizCreate/question";
 import axios from 'axios';
-// import QuizCreateComponents from '.././QuizCreateComponents';
-// import OptionInputForm from '../QuizCreateComponents/OptionInputForm';
+import "./quizCreate.css";
+
 class QuizCreate extends Component {
 	state = {
 		questionCount: 1,
@@ -132,6 +132,7 @@ class QuizCreate extends Component {
 			.then(res => {
 				console.log(res);
 				console.log(res.data);
+				 alert('Submitted!')
 			})
 	}
 
@@ -145,14 +146,14 @@ class QuizCreate extends Component {
 			<Container>
 	        <div className= "questionBox">
 	            <main>
-					<label for="quizName">Quiz Name: </label>
-					<input type="text" id="quizName" name="quizName" value={this.state.quizName} onChange={this.handleChange}/><br/>
-					<label for="quizCreator">Quiz Creator: </label>
-					<input type="text" id="quizCreator" name="quizCreator" value={this.state.quizCreator} onChange={this.handleChange}/><br/>
-	            	<button id="removeQuestion" onClick={ () => this.removeQuestions()}>Question -</button>
-	            	<button id="addQuestion" onClick={ () => this.addQuestions()}>Question +</button>
+					<label className="question-label" for="quizName">Quiz Name: </label>
+					<input className="question-label" type="text" id="quizName" name="quizName" value={this.state.quizName} onChange={this.handleChange}/><br/>
+					<label className="question-label"  for="quizCreator">Quiz Creator: </label>
+					<input className="question-label" type="text" id="quizCreator" name="quizCreator" value={this.state.quizCreator} onChange={this.handleChange}/><br/>
+	            	<button className="question-button" id="removeQuestion" onClick={ () => this.removeQuestions()}>Question -</button>
+	            	<button className="question-button" id="addQuestion" onClick={ () => this.addQuestions()}>Question +</button>
 	            	{elements}
-	            	<input type="submit" value="Submit" onClick={ () => this.submit()}/>
+	            	<input className="question-label" type="submit" value="Submit" onClick={ () => this.submit()}/>
 	            </main>
 	        </div>
 					</Container>

@@ -47,7 +47,7 @@ componentDidMount() {
   render(){
     return(
       <div className="quiz-container">
-        <div className="title">Quiz Name Here</div>
+        <div className="title">Addition</div>
         {this.state.questionBank.length > 0 &&
           this.state.responses < 5 &&
           this.state.questionBank.map(
