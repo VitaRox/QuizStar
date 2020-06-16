@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import "./Profile.css";
 import axios from "axios";
+import Scoreboard from "./scoreboard";
 
 // stateless function
 // not classes  (somewhat the same)
@@ -79,6 +80,10 @@ function Profile() {
         <input {...getInputProps()} />
         <p className="p1"> Drop files here </p>
       </div>
+
+      <aside>
+        <Scoreboard />
+      </aside>
     </div>
   );
 }
