@@ -5,7 +5,7 @@ import { Container} from 'semantic-ui-react'
 export default class Quiz extends Component{
 constructor (props){
   super(props);
-  this.state = {quiz:{ }}
+  this.state = {quiz:[]}
 }
 
 componentDidMount = () => {
@@ -25,12 +25,17 @@ getQuestions = () =>{
 
 
 render(){
-const { quiz } = this.state;
 
            return (
              <Container>
-           <div>{quiz.quizName}
-           <div>{quiz.questions}</div>
+           <div>{this.state.quiz.quizName}
+           <div>{this.state.quiz.quizCreator}
+           <ul>
+           {this.state.quiz.questions.map((item, i) =>{
+             return <li key={i}>{item.question}</li>
+           })}
+           </ul>
+           </div>
            </div>
            </Container>
 
