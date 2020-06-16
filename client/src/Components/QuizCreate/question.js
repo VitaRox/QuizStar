@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Answer from "../QuizCreate/answer";
-import OptionInputForm from '../QuizCreateComponents/OptionInputForm';
+import "./quizCreate.css";
 
 class Question extends Component {
 	constructor(props){
@@ -53,7 +53,7 @@ class Question extends Component {
 			elements.push(
 				<div>
 				<Answer questionNumber = {this.props.questionNumber} answerNumber={n+1} addAnswerValue={this.props.addAnswerValue}/>
-				<input type="radio" id="correctAnswer" name={answerId} value={n+1} onChange={this.handleChangeRadio}/><br/>
+				<input className="question-button" type="radio" id="correctAnswer" name={answerId} value={n+1} onChange={this.handleChangeRadio}/> Is Correct Answer?<br/>
 				</div>
 				);
 		}
@@ -63,7 +63,7 @@ class Question extends Component {
 				<label for="question">Question {this.props.questionNumber}:</label>
 				<input type="text" id="question" name="question" value={this.state.question} onChange={this.handleChange}/><br/>
 				{elements}
-				<button id="removeAnswer" onClick={ () => this.removeAnswer()}>Answer -</button>
+				<button className="question-button" id="removeAnswer" onClick={ () => this.removeAnswer()}>Answer -</button>
 	        	<button id="addAnswer" onClick={ () => this.addAnswer()}>Answer +</button>
         	</div>
 		)

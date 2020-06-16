@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Switch from '../QuizCreateComponents/Switch';
+import "./quizCreate.css";
 
 class Answer extends Component {
 	constructor(props){
@@ -28,7 +28,7 @@ class Answer extends Component {
 		return(
 			<span>
 				<label for="answer">Answer {this.props.answerNumber}:</label>
-				<input type="text" id="answer" name="answer" onChange={this.handleChange}/>
+				<input className="question-label" type="text" id="answer" name="answer" onChange={this.handleChange}/>
 			</span>
 		)
 	}

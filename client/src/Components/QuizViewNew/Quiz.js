@@ -1,6 +1,6 @@
 import React, {Component, useState} from 'react';
 import axios from 'axios';
-import { Container} from 'semantic-ui-react'
+import {Container} from 'semantic-ui-react'
 
 export default class Quiz extends Component{
 constructor (props){
@@ -56,7 +56,6 @@ getQuestions = () =>{
           </button>)
         }
         questionTags.push(<div className="questionBox">{questionObject.question}</div>)
-        questionTags.push(<div>Correct Answer: {questionObject.correctAnswer}</div>)
         questionTags.push(<div>{answerTags}</div>)
       }
       return (
