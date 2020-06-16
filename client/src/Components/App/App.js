@@ -37,7 +37,7 @@ const App = () => {
              <Link to="/subjects">Browse Subjects</Link>
              <Link to="/CreateQuiz">Create Quiz</Link>
              <Link to="/quiz">Quizzes</Link>
-             <Link to="/quizView">Take Quiz Temp</Link>
+             <Link to="/quizView">Take Quiz</Link>
 
             </Navigation>
         </Drawer>

@@ -31,7 +31,7 @@ render()
                  <List.Item
                   key={item.quizName}>
                   Creator: {item.quizCreator}
-            <List.Content>
+            <List.Content className="questionBox">
               <List.Header>
                 {item.quizName}
                 </List.Header>
