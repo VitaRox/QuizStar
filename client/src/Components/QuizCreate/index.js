@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Container } from 'semantic-ui-react'
 import Question from "../QuizCreate/question";
 import axios from 'axios';
 // import QuizCreateComponents from '.././QuizCreateComponents';
@@ -69,7 +70,7 @@ class QuizCreate extends Component {
     	let answers = newQuestion.answers;
 
     	value.answers = answers;
-    	
+
     	newQuestions[index] = value;
 
     	this.setState({
@@ -89,7 +90,7 @@ class QuizCreate extends Component {
     	question.answers = answers;
     	questions[questionIndex] = question;
     	console.log(this.state)
-    	
+
     	this.setState({
     		questions: questions
     	})
@@ -106,7 +107,7 @@ class QuizCreate extends Component {
     	answers.push(value);
     	question.answers = answers;
     	questions[questionIndex] = question;
-    	
+
     	this.setState({
     		questions: questions
     	})
@@ -119,7 +120,7 @@ class QuizCreate extends Component {
     	answers.pop();
     	question.answers = answers;
     	questions[questionIndex] = question;
-    	
+
     	this.setState({
     		questions: questions
     	})
@@ -141,12 +142,12 @@ class QuizCreate extends Component {
 		}
 
 		return(
-	        <div className= "addQuiz-Form">
+			<Container>
+	        <div className= "questionBox">
 	            <main>
-	            	<button id="showState" onClick={ () => console.log(this.state)}>Display State</button><br/>
-					<label for="quizName">Quiz Name:</label>
+					<label for="quizName">Quiz Name: </label>
 					<input type="text" id="quizName" name="quizName" value={this.state.quizName} onChange={this.handleChange}/><br/>
-					<label for="quizCreator">Quiz Creator:</label>
+					<label for="quizCreator">Quiz Creator: </label>
 					<input type="text" id="quizCreator" name="quizCreator" value={this.state.quizCreator} onChange={this.handleChange}/><br/>
 	            	<button id="removeQuestion" onClick={ () => this.removeQuestions()}>Question -</button>
 	            	<button id="addQuestion" onClick={ () => this.addQuestions()}>Question +</button>
@@ -154,6 +155,7 @@ class QuizCreate extends Component {
 	            	<input type="submit" value="Submit" onClick={ () => this.submit()}/>
 	            </main>
 	        </div>
+					</Container>
 	    )
 	}
 }
