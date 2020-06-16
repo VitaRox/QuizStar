@@ -9,6 +9,7 @@
     "mongoose": "^5.9.19",
     "passport": "^0.4.1",
     "react": "^16.13.1",
+    "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
     "react-dropzone": "^11.0.1",
     "react-mdl": "^2.1.0",

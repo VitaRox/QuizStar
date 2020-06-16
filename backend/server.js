@@ -1,42 +1,38 @@
-const express = require("express");
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const passport = require("passport");
-const users = require("./routes/api/users");
+const express = require("express");
 const morgan = require("morgan");
 const path = require("path");
-const Subject = require("./models/Subject");
-const Quiz = require("./models/Quiz");
-var cors = require(`cors`);
-
-
+const Subject = require("./client/src/models/Subject");
+const Quiz = require("./client/src/models/Quiz");
+var cors = require("cors");
 const User = require("./models/userModel");
-
-const port = process.env.PORT || 8080;
 const app = express();
-// Bodyparser middleware
-app.use(
-  bodyParser.urlencoded({
-    extended: false
-  })
-);
-app.use(bodyParser.json());
+app.use(cors());
+const PORT = process.env.PORT || 8080;
 
-const db = require("./config/keys").mongoURI;
-// Connect to MongoDB
-mongoose.connect(db,{ useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log("MongoDB successfully connected"))
-  .catch(err => console.log(err));
-  
-// Passport middleware
-app.use(passport.initialize());
-// Passport config
-require("./config/passport")(passport);
-// Routes
-app.use("/api/users", users);
+const MONGODB_URI =
+  "mongodb+srv://quizstar:quizstar1@mongodbqs-sdfsq.mongodb.net/test?retryWrites=true&w=majority";
+
+mongoose
+  .connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log("Connected to Mongo");
+  })
+  .catch((err) => {
+    console.error("Could not connect to Mongo", err);
+    process.exit();
+  });
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+
+//displays in terminal
+app.use(logger);
+function logger(req,res, next){
+  console.log('Log')
+  next()
+}
 
 /*
  A route to log the user in;
@@ -81,6 +77,14 @@ app.get('/quiz', (req, res) =>{
 
 });
 
+//displays one quiz by id
+app.get('/quiz/:id', async (req, res) => {
+  var data = await Quiz.findOne(req.params._id)
+  res.json(data)
+  console.log("quiz log "+ data);
+})
+
+
 //quiz route
 app.post("/quizcreate", cors(), (req, res) => {
   console.log(JSON.stringify(req.body));
@@ -121,6 +125,5 @@ app.post("/updateUser", (req, res) => {
 //HTTP request logger
 app.use(morgan("tiny"));
 
-
-
-app.listen(port, () => console.log(`Server up and running on port ${port} !`));
+// launch our backend into a port
+app.listen(PORT, console.log(`LISTENING ON PORT ${PORT}`));

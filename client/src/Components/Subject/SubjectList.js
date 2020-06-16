@@ -28,15 +28,6 @@ getSubjects = () => {
     });
 };
 
-displaySubjects = (subjects) => {
-  if(!subjects.length) return null;
-  return subjects.map((subject, index) =>(
-    <div key ={index}>
-      <h4 className="card-title">{subject.subjectName}</h4>
-    </div>
-  ));
-};
-
 render()
     {
           return (
