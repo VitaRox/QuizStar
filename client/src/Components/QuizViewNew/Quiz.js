@@ -51,7 +51,6 @@ getQuestions = () =>{
           answerTags.push(<button
             id={answerObject.id}
             className="answerBtn"
-            selected={answer => this.computeAnswer(answer, questionObject.correctAnswer)}
             >
             {answerObject.answer}
           </button>)
